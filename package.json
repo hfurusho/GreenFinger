@@ -4,6 +4,8 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "server.js",
   "dependencies": {
+    "@material-ui/core": "^4.9.3",
+    "@material-ui/icons": "^4.9.1",
     "express": "^4.17.1",
     "if-env": "^1.0.4"
   },
