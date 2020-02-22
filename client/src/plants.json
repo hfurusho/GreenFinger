@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "name": "golden pothos",
+        "location": "kitchen",
+        "startDate": "02.22.2020",
+        "waterPeriod": "14",
+        "waterTime": "8am"
+    },
+    {
+        "id": 2,
+        "name": "zz plant",
+        "location": "livingroom",
+        "startDate": "02.20.2020",
+        "waterPeriod": "30",
+        "waterTime": "3pm"
+    },
+    {
+        "id": 3,
+        "name": "monstera",
+        "location": "bedroom",
+        "startDate": "02.29.2020",
+        "waterPeriod": "10",
+        "waterTime": "9am"
+    },
+    {
+        "id": 4,
+        "name": "aloe",
+        "location": "livingroom",
+        "startDate": "02.18.2020",
+        "waterPeriod": "25",
+        "waterTime": "2pm"
+    }
+]
