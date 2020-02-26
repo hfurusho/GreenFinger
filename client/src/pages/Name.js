@@ -1,11 +1,12 @@
 import React from 'react';
-//import { makeStyles } from '@material-ui/core/styles';
-//import { TextField } from '@material-ui/core';
+import TextField from "../components/TextField";
 
 function Name(props) {
     return (
-        <div>
-            <h1>Name of Plant</h1>
+        <div style= {{ textAlign: "center" }}>
+            <h1>What kind of plant?</h1>
+
+            <TextField />
 
         </div>
 
@@ -14,3 +15,5 @@ function Name(props) {
 }
 
 export default Name;
+
+

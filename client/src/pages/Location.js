@@ -1,9 +1,13 @@
 import React from 'react';
+import TextField from "../components/TextField";
+
 
 function Location(props) {
     return (
-        <div>
-            <h1>Location of Plant</h1>
+        <div style= {{ textAlign: "center" }}>
+            <h1>Where is the location of this plant?</h1>
+
+            <TextField />
 
         </div>
 
