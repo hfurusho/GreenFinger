@@ -1,16 +1,23 @@
 import React from 'react';
-//import { makeStyles } from '@material-ui/core/styles';
-//import { TextField } from '@material-ui/core';
+import TextField from "../components/TextField";
+import Button from "../components/NextBtn";
 
 function Name(props) {
     return (
-        <div>
-            <h1>Name of Plant</h1>
+        <div style={{ textAlign: "center" }}>
+
+            <h1>What kind of plant?</h1>
+
+            <TextField />
+            <br />
+            <Button />
 
         </div>
 
-        //insert continue button component here
+
     )
 }
 
 export default Name;
+
+
