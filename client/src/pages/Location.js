@@ -1,5 +1,7 @@
 import React from 'react';
 import TextField from "../components/TextField";
+import Button from "../components/NextBtn";
+
 
 
 function Location(props) {
@@ -8,6 +10,8 @@ function Location(props) {
             <h1>Where is the location of this plant?</h1>
 
             <TextField />
+            <br />
+            <Button />
 
         </div>
 
