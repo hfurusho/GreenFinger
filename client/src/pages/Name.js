@@ -1,23 +1,16 @@
-import React from 'react';
+import React from "react";
 import TextField from "../components/TextField";
-import Button from "../components/NextBtn";
+import Button from "../components/ContinueBtn";
 
-function Name(props) {
-    return (
-        <div style={{ textAlign: "center" }}>
+export default function Name(props) {
+  return (
+    <div style={{ textAlign: "center" }}>
+      <h1>What's the name of your plant?</h1>
 
-            <h1>What kind of plant?</h1>
+      <TextField />
+      <br />
 
-            <TextField />
-            <br />
-            <Button />
-
-        </div>
-
-
-    )
+      <Button href="Location" />
+    </div>
+  );
 }
-
-export default Name;
-
-

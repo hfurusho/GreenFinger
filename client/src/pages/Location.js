@@ -1,22 +1,16 @@
-import React from 'react';
+import React from "react";
 import TextField from "../components/TextField";
-import Button from "../components/NextBtn";
+import Button from "../components/ContinueBtn";
 
+export default function Location(props) {
+  return (
+    <div style={{ textAlign: "center" }}>
+      <h1>Where is the location of this plant?</h1>
 
+      <TextField />
+      <br />
 
-function Location(props) {
-    return (
-        <div style= {{ textAlign: "center" }}>
-            <h1>Where is the location of this plant?</h1>
-
-            <TextField />
-            <br />
-            <Button />
-
-        </div>
-
-        //insert continue button component here
-    )
+      <Button href="WaterSchedule" />
+    </div>
+  );
 }
-
-export default Location;
