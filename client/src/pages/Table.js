@@ -1,10 +1,19 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Link from '@material-ui/core/Link';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+const useStyles = makeStyles({
+    table: {
+      minWidth: 650,
+    },
+  });  
 
 // Generate Order Data
 function createData(id, img, name, location) {
@@ -23,18 +32,18 @@ function preventDefault(event) {
   event.preventDefault();
 }
 
-const useStyles = makeStyles(theme => ({
-  seeMore: {
-    marginTop: theme.spacing(3),
-  },
-}));
+// const useStyles = makeStyles(theme => ({
+//   seeMore: {
+//     marginTop: theme.spacing(3),
+//   },
+// }));
 
 export default function FullTable() {
   const classes = useStyles();
   return (
-    <React.Fragment>
+    <TableContainer component={Paper}>
       <h1>My Plants：</h1>
-      <Table size="small">
+      <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Image</TableCell>
@@ -54,11 +63,11 @@ export default function FullTable() {
           ))}
         </TableBody>
       </Table>
-      {/* <div className={classes.seeMore}>
+      <div className={classes.seeMore}>
         <Link color="primary" href="#" onClick={preventDefault}>
-          See more orders
+          See more plants
         </Link>
-      </div> */}
-    </React.Fragment>
+      </div>
+      </TableContainer>
   );
 }
