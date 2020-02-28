@@ -15,7 +15,7 @@ function Location(props) {
 
         </div>
 
-        //insert continue button component here
+        
     )
 }
 
