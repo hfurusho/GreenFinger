@@ -1,6 +1,5 @@
 import React from "react";
 import TextField from "../components/TextField";
-import { Typography } from "@material-ui/core";
 import Button from "../components/ContinueBtn";
 
 function WaterSchedule(props) {
@@ -10,9 +9,8 @@ function WaterSchedule(props) {
 
       <TextField />
       <br />
-      <Typography>
-        <Button href="Notes" />
-      </Typography>
+      
+      <Button href="Notes" />
     </div>
   );
 }

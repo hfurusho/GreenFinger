@@ -1,15 +1,23 @@
 import React from "react";
+import Avatar from '@material-ui/core/Avatar';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from '@material-ui/core/styles';
-import { red } from "@material-ui/core/colors";
+import {Logo} from "../assets/logo.jpg";
+import { lightGreen } from "@material-ui/core/colors";
+// import { red } from "@material-ui/core/colors";
 
 const useStyles = makeStyles(theme => ({
+    avatar: {
+        margin: theme.spacing(1),
+        backgroundColor: {lightGreen},
+      },
     submit: {
-        margin: theme.spacing(3, 0, 2),
+        margin: theme.spacing(2, 0, 2),
       },
 }));
 
@@ -20,7 +28,8 @@ export default function LandingPage() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
 
-      <h1>Index page</h1>
+      <Avatar className={classes.avatar}>{Logo}</Avatar>
+      <Typography component="h1" variant="h5">GreenThumb</Typography>
       <Button type="submit" href="/name" fullWidth variant="contained" color="primary" className={classes.submit}>
         Get Started
       </Button>

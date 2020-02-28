@@ -1,9 +1,8 @@
 import React from "react";
 import TextField from "../components/TextField";
-import { Typography } from "@material-ui/core";
 import Button from "../components/ContinueBtn";
 
-function Name(props) {
+export default function Name(props) {
   return (
     <div style={{ textAlign: "center" }}>
       <h1>What's the name of your plant?</h1>
@@ -11,11 +10,7 @@ function Name(props) {
       <TextField />
       <br />
 
-      <Typography>
-        <Button href="Location"/>
-      </Typography>
+      <Button href="Location" />
     </div>
   );
 }
-
-export default Name;
