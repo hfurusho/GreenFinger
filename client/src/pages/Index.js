@@ -7,7 +7,6 @@ function Index(props) {
 
         </div>
 
-        //insert continue button component here
     )
 }
 

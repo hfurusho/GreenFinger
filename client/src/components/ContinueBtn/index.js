@@ -10,12 +10,12 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function OutlinedButtons() {
+export default function ContainedButtons() {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
-            <Button variant="outlined">Next</Button>
+            <Button variant="contained" color="primary">Continue</Button>
         </div>
     );
 }

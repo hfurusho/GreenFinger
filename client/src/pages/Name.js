@@ -1,6 +1,6 @@
 import React from 'react';
 import TextField from "../components/TextField";
-import Button from "../components/NextBtn";
+import Button from "../components/ContinueBtn";
 
 function Name(props) {
     return (
