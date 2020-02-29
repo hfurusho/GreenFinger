@@ -35,7 +35,6 @@ export default function Name() {
         <form>
           <TextField id="name-field" label="" onChange={updateInput} />
         </form>
-        <br />
 
         <Button href="Location" onClick={saveName} />
       </div>

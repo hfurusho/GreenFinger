@@ -24,7 +24,6 @@ export default function Notes() {
           onChange={updateInput}
         />
       </form>
-      <br />
 
       <Button href="Table" onClick={saveNotes} />
       {/* next steps:
