@@ -12,6 +12,10 @@ function Notes(props) {
       <br />
 
       <Button href="Table" />
+      {/* read all local storage values
+      end to MongoDB
+      clear local storage to blank: plantName="" */}
+      
     </div>
   );
 }
