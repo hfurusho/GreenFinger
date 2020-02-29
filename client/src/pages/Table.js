@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Link from "@material-ui/core/Link";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -17,16 +17,16 @@ const useStyles = makeStyles({
 });
 
 // Generate Order Data
-function createData(id, img, name, location) {
-  return { id, img, name, location };
+function createData(img, name, location) {
+  return { img, name, location };
 }
-
+// placeholder data
 const rows = [
-  createData(0, "cactus.jpg", "cactus", "kitchen"),
-  createData(1, "zz.jpg", "zz plant", "livingroom"),
-  createData(2, "snakePlant.jpg", "snake plant", "bathroom"),
-  createData(3, "monstera.jpg", "monstera", "livingroom"),
-  createData(4, "pothos.jpg", "pothos", "bedroom")
+  createData("cactus.jpg", "cactus", "kitchen"),
+  createData("zz.jpg", "zz plant", "livingroom"),
+  createData("snakePlant.jpg", "snake plant", "bathroom"),
+  createData("monstera.jpg", "monstera", "livingroom"),
+  createData("pothos.jpg", "pothos", "bedroom")
 ];
 
 function preventDefault(event) {
@@ -55,17 +55,15 @@ export default function FullTable() {
 
         <TableBody>
           {rows.map(row => (
-            // <Link href= {"/plants/" + row.id} onClick={preventDefault}>
-              <NavLink to={"/plants/" + row.id} data-some-attribute="some-value">
-
-              <TableRow key={row.id}>
+            // <NavLink> to Specify Which Element in a Navigation Bar Is Active
+              <TableRow key={row.name}>
+                <NavLink to={"/plants/" + row.name} data-some-attribute="some-value">
                 <TableCell>{row.img}</TableCell>
                 <TableCell>{row.name}</TableCell>
                 <TableCell>{row.location}</TableCell>
                 {/* <TableCell align="right">{row.amount}</TableCell> */}
+            </NavLink>
               </TableRow>
-
-              </NavLink>
             // </Link>
           ))}
         </TableBody>
