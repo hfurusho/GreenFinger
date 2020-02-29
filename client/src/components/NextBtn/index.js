@@ -15,7 +15,7 @@ export default function OutlinedButtons() {
 
     return (
         <div className={classes.root}>
-            <Button variant="outlined">Submit</Button>
+            <Button variant="outlined">Next</Button>
         </div>
     );
 }

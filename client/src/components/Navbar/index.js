@@ -1,20 +1,30 @@
-import React from 'react'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import HomeIcon from '@material-ui/icons/Home';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import FaceIcon from '@material-ui/icons/Face';
 
-const NavBar = () => {
-    return(
-        <div>
-        <AppBar position="static">
-            <Toolbar>
-                <Typography variant="title" color="inherit">
-                GreenThumbApp
-                </Typography>
-            </Toolbar>
-        </AppBar>
-        </div>
-    )
+const useStyles = makeStyles({
+  root: {
+    width: 500,
+  },
+});
+
+export default function LabelBottomNavigation() {
+  const classes = useStyles();
+  const [value, setValue] = React.useState('recents');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
+      <BottomNavigationAction label="" value="Index" href="index" icon={<HomeIcon />} />
+      <BottomNavigationAction label="" value="Name" href="name" icon={<AddCircleIcon />} />
+      <BottomNavigationAction label="" value="Profile" href="user" icon={<FaceIcon />} />
+    </BottomNavigation>
+  );
 }
-
-export default NavBar;

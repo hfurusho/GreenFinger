@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const plantSchema = new Schema({
     name: { type: String, required: true },
-    water: { type: Number, required: true},
-    location: String,
+    location: { type: String, required: true },
+    startDate: { type: Date, required: true },
     notes: String
 });
 

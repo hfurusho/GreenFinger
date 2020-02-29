@@ -6,8 +6,15 @@ export default function MaterialTable() {
     columns: [
       { title: 'Plant Name', field: 'name' },
       { title: 'Location', field: 'location' },
+      { title: 'Start Date', field: 'startDate', type: 'date' },
+      { title: 'Water Period (days)', field: 'waterPeriod', type: 'numeric' },
     ],
-    data: [],
+    data: [
+        {name: 'Golden Pothos', location: 'Kitchen', startDate: '02/20/2020', waterPeiod: '14'},
+        {name: 'ZZ Plant', location: 'Living Room', startDate: '02/22/2020', waterPeiod: '30'},
+        {name: 'Monstera', location: 'Bed Room', startDate: '02/29/2020', waterPeiod: '10'},
+        {name: 'Aloe', location: 'Living Room', startDate: '02/18/2020', waterPeiod: '25'},
+    ],
   });
 
   return (
