@@ -12,7 +12,7 @@ export default function Location() {
   function saveLocation() {
     localStorage.setItem("plantLocation", location);
   }
-
+  
   return (
     <div style={{ textAlign: "center" }}>
       <h1>Where is the location of this plant?</h1>

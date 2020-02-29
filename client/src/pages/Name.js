@@ -30,7 +30,7 @@ export default function Name() {
   
     return (
       <div style={{ textAlign: "center" }}>
-        <h1>What's the name of your plant?</h1>
+        <h1>What is the name of your plant?</h1>
 
         <form>
           <TextField id="name-field" label="" onChange={updateInput} />
