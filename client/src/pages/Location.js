@@ -1,22 +1,43 @@
-import React from 'react';
-import TextField from "../components/TextField";
-import Button from "../components/NextBtn";
+import React, { Component } from "react";
+import { TextField } from "@material-ui/core";
+import Button from "../components/ContinueBtn";
 
+export default class Location extends Component {
+  constructor(props) {
+    super(props);
+    // This binding is necessary to make `this` work in the callback
+    this.saveLocation = this.saveLocation.bind(this);
+    this.state = {
+      location: ""
+    };
+    this.updateInput = this.updateInput.bind(this);
+  }
 
+  updateInput(event) {
+    this.setState({
+      location: event.target.value
+    });
+  }
 
-function Location(props) {
+  saveLocation() {
+    // alert("saveLocation executed"); for testing
+    let location = this.state.location;
+    // alert(location);
+    localStorage.setItem("plantLocation", location);
+  }
+
+  render() {
     return (
-        <div style= {{ textAlign: "center" }}>
-            <h1>Where is the location of this plant?</h1>
+      <div style={{ textAlign: "center" }}>
+        <h1>Where is the location of this plant?</h1>
 
-            <TextField />
-            <br />
-            <Button />
+        <form>
+          <TextField id="name-field" label="" onChange={this.updateInput} />
+        </form>
+        <br />
 
-        </div>
-
-        //insert continue button component here
-    )
+        <Button href="WaterSchedule" onClick={this.saveLocation}/>
+      </div>
+    );
+  }
 }
-
-export default Location;
