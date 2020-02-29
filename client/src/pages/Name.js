@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-// import BasicTextField from "../components/TextField";
-import Button from "../components/ContinueBtn";
 import { TextField } from "@material-ui/core";
+import Button from "../components/ContinueBtn";
 // import { makeStyles } from "@material-ui/core/styles";
 
 export default class Name extends Component {
   constructor(props) {
     super(props);
     // this.classes = this.useStyles();
+    // This binding is necessary to make `this` work in the callback
     this.saveName = this.saveName.bind(this);
     this.state = {
       name: ""
@@ -29,11 +29,12 @@ export default class Name extends Component {
       name: event.target.value
     });
   }
+
   saveName() {
     alert("saveName executed");
     //grab text from text field and store in local story
-    var name = this.state.name;
-    // alert(name);
+    let name = this.state.name;
+    alert(name);
     localStorage.setItem("plantName",name);
   }
 
