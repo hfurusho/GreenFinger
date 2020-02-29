@@ -31,10 +31,10 @@ export default class Name extends Component {
   }
 
   saveName() {
-    alert("saveName executed");
+    // alert("saveName executed"); for testing
     //grab text from text field and store in local story
     let name = this.state.name;
-    alert(name);
+    // alert(name);
     localStorage.setItem("plantName",name);
   }
 

@@ -20,9 +20,9 @@ export default class Location extends Component {
   }
 
   saveLocation() {
-    alert("saveName executed");
+    // alert("saveLocation executed"); for testing
     let location = this.state.location;
-    alert(location);
+    // alert(location);
     localStorage.setItem("plantLocation", location);
   }
 
