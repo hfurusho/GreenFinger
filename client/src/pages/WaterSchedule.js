@@ -1,8 +1,9 @@
 import React from "react";
-import TextField from "../components/TextField";
+import { TextField } from "@material-ui/core";
 import Button from "../components/ContinueBtn";
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import DatePicker from '../components/DatePicker';
 
 export default function WaterSchedule(props) {
   return (
@@ -20,6 +21,8 @@ export default function WaterSchedule(props) {
       <br />
       
       <Button href="Notes" />
+      <DatePicker />
+
     </div>
     </Container>
   );
