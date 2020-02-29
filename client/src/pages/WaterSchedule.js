@@ -6,7 +6,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import DatePicker from '../components/DatePicker';
 import TimePicker from '../components/TimePicker';
 
-
 export default function WaterSchedule(props) {
   const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
 
@@ -14,8 +13,16 @@ export default function WaterSchedule(props) {
     setSelectedDate(date);
   };
 
+  const [selectedTime, setSelectedTime] = React.useState(new Date('2014-08-18T21:11:54'));
+
+  const handleTimeChange = date => {
+    setSelectedTime(date);
+  };
+
   function saveSelectedDate(){
-    localStorage.setItem("date", selectedDate);
+    localStorage.setItem("date", selectedTime);
+    localStorage.setItem("time", selectedTime);
+
   }
 
   return (
@@ -29,7 +36,7 @@ export default function WaterSchedule(props) {
       <h3>Remind me every:</h3>
       <TextField />Days
       <h3>Notify me at</h3>
-      <TimePicker />
+      <TimePicker onTimeChange={handleTimeChange} date={selectedTime}/>
       <br />
       
       <Button href="Notes" onClick={saveSelectedDate}/>
