@@ -32,7 +32,7 @@ export default class Location extends Component {
         <h1>Where is the location of this plant?</h1>
 
         <form>
-          <TextField id="name-field" label="" onChange={this.updateInput} />
+          <TextField id="filled-basic" label="ie kitchen" variant="filled" onChange={this.updateInput} />
         </form>
         <br />
 

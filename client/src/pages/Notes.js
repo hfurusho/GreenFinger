@@ -32,7 +32,7 @@ constructor(props) {
       <div style={{ textAlign: "center" }}>
         <h1>Additional Notes?</h1>
         <form>
-          <TextField id="name-field" label="" onChange={this.updateInput} />
+          <TextField id="filled-basic" label="ie low light" variant="filled" onChange={this.updateInput} />
         </form>
         {/* <Multiline /> */}
         <br />
