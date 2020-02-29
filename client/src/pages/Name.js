@@ -41,10 +41,10 @@ export default class Name extends Component {
   render() {
     return (
       <div style={{ textAlign: "center" }}>
-        <h1>What's the name of your plant?</h1>
+        <h1>What is the name of your plant?</h1>
 
         <form>
-          <TextField id="name-field" label="" onChange={this.updateInput} />
+          <TextField id="filled-basic" label="ie succulent" variant="filled" onChange={this.updateInput} />
         </form>
         <br />
 

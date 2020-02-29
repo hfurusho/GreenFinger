@@ -1,5 +1,4 @@
 import React from "react";
-import Avatar from "@material-ui/core/Avatar";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
@@ -7,7 +6,8 @@ import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import { Logo } from "../assets/logo.jpg";
+import Logo from "./logo.jpg";
+
 import { lightGreen } from "@material-ui/core/colors";
 // import { red } from "@material-ui/core/colors";
 
@@ -35,7 +35,7 @@ export default function LandingPage() {
       <CssBaseline />
 
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>{Logo}</Avatar>
+        <img src={Logo} style= {{ width: 100 }} alt="" />
         <Typography component="h1" variant="h5">
           GreenThumb
         </Typography>
