@@ -17,19 +17,15 @@ export default function Notes() {
     <div style={{ textAlign: "center" }}>
       <h1>Additional Notes?</h1>
       <form>
-        <TextField
-          id="name-field"
-          label=""
-          value={notes}
-          onChange={updateInput}
-        />
+        <TextField id="name-field" label="" value={notes} onChange={updateInput}/>
       </form>
 
       <Button href="Table" onClick={saveNotes} />
+      
       {/* next steps:
-        read all local storage values;
-        send to MongoDB as object;
-        clear local storage to blank: plantName="" ;*/}
+        1. read all local storage values;
+        2. send to MongoDB as object;
+        3. clear local storage to blank: plantName="" ;*/}
     </div>
   );
 }
