@@ -1,42 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import API from "../utils/API";
 import { TextField } from "@material-ui/core";
 import Button from "../components/SubmitBtn";
 
 export default function Notes() {
   const [notes, setNotes] = useState("");
-  // const [plantObject, setPlantObject] = useState({});
-
-  // Load all plants and store them with setPlantObject
-  useEffect(() => {
-    const plantData = {
-      name: "cactus",
-      location: "kitchen",
-      startDate: "1992-10-16",
-      period: 40,
-      waterTime: "1992-10-16",
-      notes: "no light"
-    };
-
-    API.savePlant(plantData);
-  }, []);
-
-  // Loads all plants and sets them to plantObject
-  // function loadPlants() {
-  //   API.getPlants()
-  //     .then(res => setPlantObject(res.data))
-  //     .catch(err => console.log(err));
-  // }
-
-  // use the API.savePlant method to save the plant data
-  // Then reload plants from the database
 
   function handleDataSubmit(plantObject) {
-    console.log("here", plantObject);
-
+    //console.log("here", plantObject);
     API.savePlant({
       name: plantObject.name,
       location: plantObject.location,
+      type: plantObject.type,
       startDate: plantObject.startDate,
       period: plantObject.period,
       waterTime: plantObject.waterTime,
@@ -55,17 +30,18 @@ export default function Notes() {
     event.preventDefault();
     localStorage.setItem("plantNotes", notes);
 
-    //read all local storage values put into an object
+    //read all local storage values, put into an object
     let plantObject;
     plantObject = {
       name: localStorage.getItem("plantName"),
       location: localStorage.getItem("plantLocation"),
+      type: localStorage.getItem("plantType"),
       date: localStorage.getItem("date"),
       time: localStorage.getItem("time"),
       period: localStorage.getItem("period"),
       notes: localStorage.getItem("plantNotes")
     };
-    console.log(plantObject);
+    //console.log(plantObject);
 
     //send to MongoDB as object;
     handleDataSubmit(plantObject);
@@ -73,6 +49,7 @@ export default function Notes() {
     //clear local storage to blank
     localStorage.setItem("plantName", "");
     localStorage.setItem("plantLocation", "");
+    localStorage.setItem("plantType", "");
     localStorage.setItem("date", "");
     localStorage.setItem("time", "");
     localStorage.setItem("period", "");
@@ -110,3 +87,22 @@ export default function Notes() {
 //     .then(res => loadPlants())
 //     .catch(err => console.log(err));
 // }
+// Loads all plants and sets them to plantObject
+  // function loadPlants() {
+  //   API.getPlants()
+  //     .then(res => setPlantObject(res.data))
+  //     .catch(err => console.log(err));
+  // }
+
+  //for testing with backend, add useEffect in line 1
+  // useEffect(() => {
+  //   const plantData = {
+  //     name: "cactus",
+  //     location: "kitchen",
+  //     startDate: "1992-10-16",
+  //     period: 40,
+  //     waterTime: "1992-10-16",
+  //     notes: "no light"
+  //   };
+  //    API.savePlant(plantData);
+  // }, []);
