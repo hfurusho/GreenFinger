@@ -9,14 +9,16 @@ export default function Notes() {
 
   // Load all plants and store them with setPlantObject
   useEffect(() => {
-    API.savePlant({
+    const plantData = {
       name: "cactus",
       location: "kitchen",
       startDate: "1992-10-16",
       period: 40,
       waterTime: "1992-10-16",
       notes: "no light"
-    })
+    };
+
+    API.savePlant(plantData);
   }, []);
 
   // Loads all plants and sets them to plantObject
@@ -29,19 +31,18 @@ export default function Notes() {
   // use the API.savePlant method to save the plant data
   // Then reload plants from the database
   function handleDataSubmit(plantObject) {
-    console.log(plantObject)
+    console.log(plantObject);
 
-      API.savePlant({
-        name: plantObject.name,
-        location: plantObject.location,
-        startDate: plantObject.startDate,
-        period: plantObject.period,
-        waterTime: plantObject.waterTime,
-        notes: plantObject.notes
-      })
-        // .then(res => loadPlants())
-        .catch(err => console.log(err));
-
+    API.savePlant({
+      name: plantObject.name,
+      location: plantObject.location,
+      startDate: plantObject.startDate,
+      period: plantObject.period,
+      waterTime: plantObject.waterTime,
+      notes: plantObject.notes
+    })
+      // .then(res => loadPlants())
+      .catch(err => console.log(err));
   }
 
   //functions for notes -------------------
