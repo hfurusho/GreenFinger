@@ -1,5 +1,5 @@
 import React from "react";
-import Grid from '@material-ui/core/Grid';
+import Grid from "@material-ui/core/Grid";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
@@ -14,13 +14,13 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import NoMatch from "./pages/NoMatch";
 
+import rootReducer from "./reducers";
 //import "./App.css";
 
 function App() {
   return (
     <Router>
       <div className="App">
-
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/name" component={Name} />
@@ -42,7 +42,6 @@ function App() {
             <Navbar />
           </Grid>
         </Grid>
-
       </div>
     </Router>
   );
