@@ -30,12 +30,27 @@ export default class Name extends Component {
     });
   }
 
+  handleKeyPress(event) {
+    if(event.key === 'Enter'){
+      event.preventDefault();
+      this.saveName();
+    }
+  }
+
+  handleClick(event) {
+    this.saveName();
+    event.preventDefault();
+  }
+
   saveName() {
-    // alert("saveName executed"); for testing
-    //grab text from text field and store in local story
     let name = this.state.name;
-    // alert(name);
-    localStorage.setItem("plantName",name);
+
+    if(!name){
+      alert('Please enter a name');
+    } else {
+      localStorage.setItem("plantName",name);
+      window.location = 'Location';
+    }
   }
 
   render() {
@@ -44,11 +59,17 @@ export default class Name extends Component {
         <h1>What is the name of your plant?</h1>
 
         <form>
-          <TextField id="filled-basic" label="ie succulent" variant="filled" onChange={this.updateInput} />
+          <TextField 
+          id="filled-basic" 
+          label="ie succulent" 
+          variant="filled" 
+          onChange={this.updateInput} 
+          onKeyPress={this.handleKeyPress.bind(this)}
+          />
         </form>
         <br />
 
-        <Button href="Location" onClick={this.saveName} />
+        <Button onClick={this.handleClick.bind(this)} />
       </div>
     );
   }
