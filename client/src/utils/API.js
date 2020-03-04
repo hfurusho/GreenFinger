@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
   // Gets all plants
-  getplants: function() {
+  getPlants: function() {
     return axios.get("/api/plants");
   },
   // Gets the plant with the given id
