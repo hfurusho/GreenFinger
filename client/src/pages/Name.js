@@ -19,8 +19,9 @@ export default function Name() {
       <h1>What is the name of your plant?</h1>
       <form>
         <TextField
-          id="filled-basic"
-          label="ie succulent"
+          id="name-field"
+          label=""
+          placeholder="cactus"
           variant="filled"
           onChange={updateInput}
         />

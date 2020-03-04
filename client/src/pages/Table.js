@@ -56,12 +56,15 @@ export default function FullTable() {
         <TableBody>
           {rows.map(row => (
             // <NavLink> to Specify Which Element in a Navigation Bar Is Active
-            <TableRow key={row.name}>
-              <TableCell><NavLink to={"/plants/" + row.name} data-some-attribute="some-value">{row.img}</NavLink></TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.location}</TableCell>
-              {/* <TableCell align="right">{row.amount}</TableCell> */}
-            </TableRow>
+              <TableRow key={row.name}>
+                <NavLink to={"/plants/" + row.name} data-some-attribute="some-value">
+                <TableCell>
+                  {row.img}</TableCell>
+                <TableCell>{row.name}</TableCell>
+                <TableCell>{row.location}</TableCell>
+                {/* <TableCell align="right">{row.amount}</TableCell> */}
+            </NavLink>
+              </TableRow>
             // </Link>
           ))}
         </TableBody>
