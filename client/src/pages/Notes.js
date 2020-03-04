@@ -5,19 +5,26 @@ import Button from "../components/SubmitBtn";
 
 export default function Notes() {
   const [notes, setNotes] = useState("");
-  const [plantObject, setPlantObject] = useState({});
+  // const [plantObject, setPlantObject] = useState({});
 
   // Load all plants and store them with setPlantObject
   useEffect(() => {
-    loadPlants();
+    API.savePlant({
+      name: "cactus",
+      location: "kitchen",
+      startDate: "1992-10-16",
+      period: 40,
+      waterTime: "1992-10-16",
+      notes: "no light"
+    })
   }, []);
 
   // Loads all plants and sets them to plantObject
-  function loadPlants() {
-    API.getPlants()
-      .then(res => setPlantObject(res.data))
-      .catch(err => console.log(err));
-  }
+  // function loadPlants() {
+  //   API.getPlants()
+  //     .then(res => setPlantObject(res.data))
+  //     .catch(err => console.log(err));
+  // }
 
   // use the API.savePlant method to save the plant data
   // Then reload plants from the database
@@ -32,7 +39,7 @@ export default function Notes() {
         waterTime: plantObject.waterTime,
         notes: plantObject.notes
       })
-        .then(res => loadPlants())
+        // .then(res => loadPlants())
         .catch(err => console.log(err));
 
   }
