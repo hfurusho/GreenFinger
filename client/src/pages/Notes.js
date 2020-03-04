@@ -1,49 +1,69 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
-// import Multiline from "../components/Multiline";
 import Button from "../components/SubmitBtn";
 
-export default class Notes extends Component {
-constructor(props) {
-  super(props);
-  this.saveNotes = this.saveNotes.bind(this);
-    this.state = {
-      name: ""
-    };
-    this.updateInput = this.updateInput.bind(this);
+export default function Notes() {
+  const [notes, setNotes] = useState("");
+  const [plantObject, setPlantObject] = useState({});
+
+  // Load all plants and store them with setPlantObject
+  useEffect(() => {
+    loadPlants()
+  }, [])
+
+  // Loads all planss and sets them to plants
+  function loadPlants() {
+    API.getPlants()
+      .then(res => 
+        setPlants(res.data)
+      )
+      .catch(err => console.log(err));
+  };
+
+
+  // Handles updating component state when the user types into the input field
+  function handleDataChange(event) {
+    const { name, value } = event.target;
+    setPlantObject({...plantObject, [name]: value})
+  };
+
+  // When the form is submitted, use the API.savePlant method to save the plant data
+  // Then reload plants from the database
+  function handleDataSubmit(event) {
+    event.preventDefault();
+    if (plantObject.title && plantObject.author) {
+      API.saveBook({
+        title: plantObject.title,
+        author: plantObject.author,
+        synopsis: plantObject.synopsis
+      })
+        .then(res => loadBooks())
+        .catch(err => console.log(err));
+    }
+  };
+  
+  
+  function updateInput(event) {
+    setNotes(event.target.value);
   }
 
-  updateInput(event) {
-    this.setState({
-      name: event.target.value
-    });
+  function saveNotes() {
+    localStorage.setItem("plantNotes", notes);
   }
 
-  saveNotes() {
-    alert("saveNotes executed");
-    //grab text from text field and store in local story
-    let notes = this.state.notes;
-    alert(notes);
-    localStorage.setItem("plantNotes",notes);
-  }
+  // next steps:
+  //   1. read all local storage values;
+  //   2. send to MongoDB as object;
+  //   3. clear local storage to blank: plantName="" ;
 
-  render(){
-    return (
-      <div style={{ textAlign: "center" }}>
-        <h1>Additional Notes?</h1>
-        <form>
-          <TextField id="filled-basic" label="ie low light" variant="filled" onChange={this.updateInput} />
-        </form>
-        {/* <Multiline /> */}
-        <br />
-  
-        <Button href="Table" onClick={this.saveNotes} />
-        {/* read all local storage values
-        end to MongoDB
-        clear local storage to blank: plantName="" */}
-  
-      </div>
-    );
-  }
-  
+  return (
+    <div style={{ textAlign: "center" }}>
+      <h1>Additional Notes?</h1>
+      <form>
+        <TextField id="name-field" label="" value={notes} onChange={updateInput}/>
+      </form>
+
+      <Button href="Table" onClick={saveNotes} />
+    </div>
+  );
 }

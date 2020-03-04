@@ -5,6 +5,7 @@ const plantSchema = new Schema({
     name: { type: String, required: true },
     location: { type: String, required: true },
     startDate: { type: Date, required: true },
+    nextDate: { type: Date },
     notes: String
 });
 

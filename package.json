@@ -9,12 +9,9 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-<<<<<<< HEAD
     "if-env": "^1.0.4",
-    "material-table": "^1.57.2"
-=======
+    "material-table": "^1.57.2",
     "express-session": "^1.17.0",
-    "if-env": "^1.0.4",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.2",
@@ -22,7 +19,6 @@
     "passport-jwt": "^4.0.0",
     "passport-local-mongoose": "^6.0.1",
     "validator": "^12.2.0"
->>>>>>> cffe5f502e882a69bf3dec4c187f4bd6c15d0f3e
   },
   "devDependencies": {
     "concurrently": "^4.1.2",
