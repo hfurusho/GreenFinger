@@ -12,12 +12,7 @@ export default function PlantDetail() {
             <h2>Addition notes: </h2>
             <Link color="primary" href="WaterSchedule">
                 Change Water Schedule
-            </Link>
-
-
-
-            
+            </Link>         
         </Container>
-
     )
 }

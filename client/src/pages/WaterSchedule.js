@@ -39,7 +39,7 @@ export default function WaterSchedule(props) {
       <h3>Remind me every:</h3>
       <TextField id="period-field" onChange={updateInput}/>Days
       <h3>Notify me at</h3>
-      <TimePicker onTimeChange={handleTimeChange} time={selectedTime}/>
+      <TimePicker onTimeChange={handleTimeChange} selectedTime={selectedTime}/>
       <br />
       
       <Button href="Notes" onClick={saveSelectedDate}/>
