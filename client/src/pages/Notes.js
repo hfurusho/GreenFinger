@@ -22,7 +22,8 @@ export default function Notes() {
   // use the API.savePlant method to save the plant data
   // Then reload plants from the database
   function handleDataSubmit(plantObject) {
-    if (plantObject.title && plantObject.author) {
+    console.log(plantObject)
+
       API.savePlant({
         name: plantObject.name,
         location: plantObject.location,
@@ -33,7 +34,7 @@ export default function Notes() {
       })
         .then(res => loadPlants())
         .catch(err => console.log(err));
-    }
+
   }
 
   //functions for notes -------------------
