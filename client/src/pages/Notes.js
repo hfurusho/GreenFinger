@@ -30,8 +30,9 @@ export default function Notes() {
 
   // use the API.savePlant method to save the plant data
   // Then reload plants from the database
+
   function handleDataSubmit(plantObject) {
-    console.log(plantObject);
+    console.log("here", plantObject);
 
     API.savePlant({
       name: plantObject.name,
@@ -50,7 +51,8 @@ export default function Notes() {
     setNotes(event.target.value);
   }
 
-  function saveNotes() {
+  function saveNotes(event) {
+    event.preventDefault();
     localStorage.setItem("plantNotes", notes);
 
     //read all local storage values put into an object
