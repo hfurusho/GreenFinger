@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
 import Button from "../components/ContinueBtn";
 import Container from '@material-ui/core/Container';
@@ -7,22 +7,25 @@ import DatePicker from '../components/DatePicker';
 import TimePicker from '../components/TimePicker';
 
 export default function WaterSchedule(props) {
-  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
-
+  const [selectedDate, setSelectedDate] = React.useState(new Date('2020-03-07T21:11:54'));
   const handleDateChange = date => {
     setSelectedDate(date);
   };
 
-  const [selectedTime, setSelectedTime] = React.useState(new Date('2014-08-18T21:11:54'));
-
-  const handleTimeChange = date => {
-    setSelectedTime(date);
+  const [selectedTime, setSelectedTime] = React.useState(new Date('2020-03-07T09:11:54'));
+  const handleTimeChange = time => {
+    setSelectedTime(time);
   };
 
-  function saveSelectedDate(){
-    localStorage.setItem("date", selectedTime);
-    localStorage.setItem("time", selectedTime);
+  const [period, setPeriod] = useState("7");
+  function updateInput(event){
+    setPeriod(event.target.value)
+  }
 
+  function saveSelectedDate(){
+    localStorage.setItem("date", selectedDate);
+    localStorage.setItem("time", selectedTime);
+    localStorage.setItem("period", period);
   }
 
   return (
@@ -34,9 +37,9 @@ export default function WaterSchedule(props) {
       <h3>Start Date: </h3>
       <DatePicker onDateChange={handleDateChange} date={selectedDate} />
       <h3>Remind me every:</h3>
-      <TextField />Days
+      <TextField id="period-field" onChange={updateInput}/>Days
       <h3>Notify me at</h3>
-      <TimePicker onTimeChange={handleTimeChange} date={selectedTime}/>
+      <TimePicker onTimeChange={handleTimeChange} time={selectedTime}/>
       <br />
       
       <Button href="Notes" onClick={saveSelectedDate}/>

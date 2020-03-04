@@ -5,12 +5,6 @@ import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardTimePicker} from '@material-ui/pickers';
 
 export default function MaterialUIPickers(props) {
-  
-  // const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
-
-  // const handleDateChange = date => {
-  //   setSelectedDate(date);
-  // };
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -19,8 +13,8 @@ export default function MaterialUIPickers(props) {
           margin="normal"
           id="time-picker"
           label=""
-          value={props.selectedDate}
-          onChange={props.handleDateChange}
+          value={props.selectedTime}
+          onChange={props.onTimeChange}
           KeyboardButtonProps={{
             'aria-label': 'change time',
           }}

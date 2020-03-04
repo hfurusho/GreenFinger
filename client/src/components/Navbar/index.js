@@ -6,9 +6,8 @@ import Container from '@material-ui/core/Container';
 import HomeIcon from '@material-ui/icons/Home';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import FaceIcon from '@material-ui/icons/Face';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import LandingPage from '../../pages/LandingPage';
-
+import { BrowserRouter as Route} from "react-router-dom";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
