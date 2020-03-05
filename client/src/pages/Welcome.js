@@ -20,7 +20,7 @@ export default function Welcome() {
       <h2>Time to add a plant!</h2>
       <Button
         type="submit"
-        href="SignUp"
+        href="Name"
         fullWidth
         variant="contained"
         color="primary"
