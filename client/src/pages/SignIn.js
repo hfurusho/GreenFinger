@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
@@ -8,23 +8,11 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-// import Box from '@material-ui/core/Box';
 import NaturePeopleIcon from "@material-ui/icons/NaturePeople";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {'Copyright © '}
-//       <Link color="inherit" href="https://material-ui.com/">
-//         Your Website
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
+import authContext from "../authContext";
+import { datePickerDefaultProps } from "@material-ui/pickers/constants/prop-types";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -46,12 +34,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignIn() {
+export default function SignIn(props) {
   const [state, setState] = useState({
     email: "",
     password: "",
     errors: {}
   });
+
+  const { errors, loginUser, isAuthenticated } = useContext(authContext);
 
   const classes = useStyles();
 
@@ -67,8 +57,14 @@ export default function SignIn() {
       password: state.password
     };
 
-    console.log(userData);
+    loginUser(userData);
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push("/Table");
+    }
+  }, [isAuthenticated]);
 
   return (
     <Container component="main" maxWidth="xs">
