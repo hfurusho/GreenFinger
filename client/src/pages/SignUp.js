@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -10,10 +10,8 @@ import NaturePeopleIcon from "@material-ui/icons/NaturePeople";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { registerUser } from "../actions/authActions.js";
-import axios from "axios";
-
-import { useGlobalStore } from "../GlobalStore";
+import authContext from "../authContext";
+import classnames from "classnames";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -45,7 +43,7 @@ export default function SignUp(props) {
     errors: {}
   });
 
-  const { state, dispatch } = useGlobalStore();
+  const { errors, registerUser } = useContext(authContext);
 
   const handleChange = e => {
     setState({ ...localState, [e.target.name]: e.target.value });
@@ -61,16 +59,12 @@ export default function SignUp(props) {
       password2: localState.password2
     };
 
-    axios
-      .post("/api/users/register", newUser)
-      .then(res => props.history.push("/SignIn")) // re-direct to login on successful register
-      .catch(err =>
-        dispatch({
-          type: "GET_ERRORS",
-          payload: err.response.data
-        })
-      );
+    registerUser(newUser, props.history);
   };
+
+  useEffect(() => {
+    setState({ ...localState, errors: errors });
+  }, [errors]);
 
   const classes = useStyles();
 
@@ -153,14 +147,6 @@ export default function SignUp(props) {
                 autoComplete="current-password"
               />
             </Grid>
-            {/* <Grid item xs={12}>
-                <FormControlLabel
-                  control={
-                    <Checkbox value="allowExtraEmails" color="primary" />
-                  }
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid> */}
           </Grid>
           <Button
             type="submit"
