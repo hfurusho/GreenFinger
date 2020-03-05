@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import DatePicker from '../components/DatePicker';
 import TimePicker from '../components/TimePicker';
+import { format } from 'date-fns';
 
 export default function WaterSchedule(props) {
   const [selectedDate, setSelectedDate] = React.useState(new Date('2020-03-07T21:11:54'));
@@ -23,9 +24,9 @@ export default function WaterSchedule(props) {
   }
 
   function saveSelectedDate(){
-    localStorage.setItem("date", selectedDate);
-    localStorage.setItem("time", selectedTime);
-    localStorage.setItem("period", period);
+    localStorage.setItem("plantStartDate", format(selectedDate, 'yyyy-MM-dd'));
+    localStorage.setItem("plantTime", format(selectedTime, 'p'));
+    localStorage.setItem("plantPeriod", period);
   }
 
   return (
