@@ -1,7 +1,19 @@
 import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
 import Button from "../components/ContinueBtn";
-import axios from "axios";
+import Container from "@material-ui/core/Container";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center"
+  }
+}));
 
 export default function Type() {
   const [type, setType] = useState("");
@@ -56,8 +68,13 @@ export default function Type() {
     setType(event.target.value);
   }
 
+  const classes = useStyles();
+
   return (
-    <div style={{ textAlign: "center" }}>
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+
+      <div className={classes.paper}>
       <h1>What's the type of this plant?</h1>
       <form>
         <TextField
@@ -70,6 +87,8 @@ export default function Type() {
 
       <Button href="WaterSchedule" onClick={saveType} />
     </div>
+    </Container>
+
   );
 }
 
