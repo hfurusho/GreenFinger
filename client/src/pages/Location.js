@@ -15,12 +15,12 @@ export default function Location() {
   
   return (
     <div style={{ textAlign: "center" }}>
-      <h1>Where is the location of this plant?</h1>
+      <h1>Where's the location of this plant?</h1>
       <form>
         <TextField id="name-field" placeholder="livingroom" label="" onChange={updateInput} />
       </form>
      
-      <Button href="WaterSchedule" onClick={saveLocation}/>
+      <Button href="Type" onClick={saveLocation}/>
     </div>
   );
 }

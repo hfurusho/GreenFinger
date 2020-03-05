@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Name from "./pages/Name";
 import Location from "./pages/Location";
+import Type from "./pages/Type";
 import WaterSchedule from "./pages/WaterSchedule";
 import Notes from "./pages/Notes";
 import Table from "./pages/Table";
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/name" component={Name} />
           <Route exact path="/location" component={Location} />
+          <Route exact path="/type" component={Type} />
           <Route exact path="/waterschedule" component={WaterSchedule} />
           <Route exact path="/notes" component={Notes} />
           <Route exact path="/table" component={Table} />
