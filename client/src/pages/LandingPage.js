@@ -37,31 +37,26 @@ export default function LandingPage() {
       <div className={classes.paper}>
         <img src={Logo} style= {{ width: 100 }} alt="" />
         <Typography component="h1" variant="h5">
-          GreenThumb
+          Thrive
         </Typography>
         <Button
           type="submit"
-          href="/name"
+          href="SignUp"
           fullWidth
           variant="contained"
           color="primary"
           className={classes.submit}
         >
-          Get Started
+          Get Started with Thrive
         </Button>
 
-        <h3>Sign Up/ Sign In</h3>
-        <Grid container justify="center">
-          <Grid item>
-            <Link href="SignUp" variant="body2">
-              Sign up
-            </Link>
-            <p> | </p>
-            <Link href="SignIn" variant="body2">
-              Sign in
-            </Link>
+        <Grid container justify="flex-end">
+            <Grid item>
+              <Link href="SignIn" variant="body2">
+                Already have an account? Sign in
+              </Link>
+            </Grid>
           </Grid>
-        </Grid>
       </div>
     </Container>
   );
