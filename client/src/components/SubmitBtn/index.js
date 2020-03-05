@@ -22,7 +22,7 @@ export default function ContainedButtons(props) {
             onClick={props.onClick} 
             className={`card-btn ${props["data-value"]}`} 
             {...props} 
-            style={{ background: teal[500]} }
+            style={{ color: "#fff", background: teal[500]}}
             startIcon={<SubmitIcon />}
             variant="contained">
                 Submit

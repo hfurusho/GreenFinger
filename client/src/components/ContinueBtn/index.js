@@ -2,7 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import ContinueIcon from '@material-ui/icons/ArrowForward';
-import lightGreen from '@material-ui/core/colors/lightGreen';
+import teal from "@material-ui/core/colors/teal";
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -21,7 +22,7 @@ export default function ContainedButtons(props) {
             onClick={props.onClick} 
             className={`card-btn ${props["data-value"]}`} 
             {...props} 
-            style={{ background: lightGreen[500]} }
+            style={{ color: "#fff", background: teal[500]}}
             startIcon={<ContinueIcon />}
             variant="contained">
                 Continue

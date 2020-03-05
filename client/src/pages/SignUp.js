@@ -12,7 +12,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import authContext from "../authContext";
 import teal from "@material-ui/core/colors/teal";
-import classnames from "classnames";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -38,6 +37,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function SignUp(props) {
+  
   const [localState, setState] = useState({
     firstName: "",
     lastName: "",
