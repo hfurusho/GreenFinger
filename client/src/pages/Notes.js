@@ -9,7 +9,7 @@ export default function Notes() {
   function handleDataSubmit(plantObject) {
     console.log("API.savePlant FIRED")
     console.log("API", plantObject);
-    
+
     API.savePlant({
       name: plantObject.name,
       location: plantObject.location,
@@ -28,7 +28,7 @@ export default function Notes() {
   }
 
   function saveNotes(event) {
-    event.preventDefault();
+    // event.preventDefault();
     localStorage.setItem("plantNotes", notes);
 
     //read all local storage values, put into an object

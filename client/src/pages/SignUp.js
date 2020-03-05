@@ -150,6 +150,7 @@ export default function SignUp(props) {
           </Grid>
           <Button
             type="submit"
+            href="/welcome"
             fullWidth
             variant="contained"
             color="primary"
@@ -158,6 +159,7 @@ export default function SignUp(props) {
           >
             Sign Up
           </Button>
+          {/* href not working ??????? */}
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="SignIn" variant="body2">

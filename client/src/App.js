@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
+import Welcome from "./pages/Welcome";
 import Name from "./pages/Name";
 import Location from "./pages/Location";
 import Type from "./pages/Type";
@@ -25,6 +26,7 @@ function App() {
         <div className="App">
           <Switch>
             <Route exact path="/" component={LandingPage} />
+            <Route exact path="/welcome" component={Welcome} />
             <Route exact path="/name" component={Name} />
             <Route exact path="/location" component={Location} />
             <Route exact path="/type" component={Type} />
