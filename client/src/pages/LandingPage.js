@@ -7,7 +7,7 @@ import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import Logo from "../assets/logo.png";
-import { teal, orange } from "@material-ui/core/colors";
+import teal from "@material-ui/core/colors/teal";
 
 
 const useStyles = makeStyles(theme => ({
@@ -19,6 +19,9 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(2, 0, 2)
+  },
+  link: {
+    color: "teal"
   }
 }));
 
@@ -38,7 +41,7 @@ export default function LandingPage() {
           href="SignUp"
           type="submit"
           variant="contained"
-          color="teal"
+          style={{ color: "#fff", background: teal[500]}}
           className={classes.submit}
         >
           Get Started with Thrive
@@ -46,7 +49,7 @@ export default function LandingPage() {
 
         <Grid container justify="flex-end">
           <Grid item>
-            <Link href="SignIn" variant="body2">
+            <Link href="SignIn" variant="body2" className={classes.link}>
               Already have an account? Sign in
             </Link>
           </Grid>

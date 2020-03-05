@@ -75,6 +75,8 @@ export default function Notes() {
   );
 }
 
+
+
 // Deletes a plant from the database with a given id, then reloads plants from the db
 // function deletePlant(id) {
 //   API.deletePlant(id)
