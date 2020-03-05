@@ -14,12 +14,13 @@ export default function Notes() {
       name: plantObject.name,
       location: plantObject.location,
       type: plantObject.type,
-      startDate: plantObject.startDate,
+      date: plantObject.date,
       period: plantObject.period,
-      waterTime: plantObject.waterTime,
-      notes: plantObject.notes
+      time: plantObject.time,
+      notes: plantObject.notes,
+      image: plantObject.image
     })
-    .catch(err => console.log(err));
+    // .catch(err => console.log(err));
   }
 
   //functions for notes -------------------
@@ -28,7 +29,7 @@ export default function Notes() {
   }
 
   function saveNotes(event) {
-    // event.preventDefault();
+    event.preventDefault();
     localStorage.setItem("plantNotes", notes);
 
     //read all local storage values, put into an object
@@ -41,6 +42,7 @@ export default function Notes() {
       time: localStorage.getItem("time"),
       period: localStorage.getItem("period"),
       notes: localStorage.getItem("plantNotes"),
+      image: localStorage.getItem("image")
     };
     console.log("localStorage", plantObject);
 
@@ -70,7 +72,8 @@ export default function Notes() {
         />
       </form>
 
-      <Button href="Table" onClick={saveNotes} />
+      <Button  onClick={saveNotes} />
+      {/* href="Table" */}
     </div>
   );
 }

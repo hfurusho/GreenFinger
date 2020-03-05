@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
 import Button from "../components/ContinueBtn";
-import Axios from "axios";
+import axios from "axios";
 
 export default function Type() {
   const [type, setType] = useState("");
@@ -14,18 +14,32 @@ export default function Type() {
 
   function searchImage(type) {
     console.log("searchImage fired");
+    console.log(type);
+
     const queryUrl = `https://pixabay.com/api/?key=15485203-cba91f318bb796f35c4848942&q=${type}&image_type=photo&pretty=true`;
-    Axios.get(queryUrl)
-      .then(function(res){
-        const imageUrl = res.data.hits[0].webformatURL;
-        console.log("api call result", res);
-        console.log("imageUrl", imageUrl);
-        saveImage(imageUrl);
+    // axios.get(queryUrl)
+    //   .then(function(res){
+    //     const imageUrl = res.data.hits[0].webformatURL;
+    //     console.log("api call result", res);
+    //     console.log("imageUrl", imageUrl);
+
+    //     saveImage(imageUrl);
+    //   })
+    //   .catch(err => console.log(err))
+
+    fetch(queryUrl)
+      .then(function(response) {
+        return response.json();
       })
-      .catch(err => console.log(err)) 
-      
-    }
-  
+      .then(function(data) {
+        const imageUrl = data.hits[0].webformatURL;
+        console.log("api call result", data);
+        console.log("imageUrl", imageUrl);
+
+        saveImage(imageUrl);
+      });
+  }
+
   function saveImage(imgUrl) {
     console.log("saveImg fired");
     localStorage.setItem("image", imgUrl);
