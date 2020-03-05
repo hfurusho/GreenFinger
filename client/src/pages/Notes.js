@@ -2,6 +2,19 @@ import React, { useState } from "react";
 import API from "../utils/API";
 import { TextField } from "@material-ui/core";
 import Button from "../components/SubmitBtn";
+import Container from "@material-ui/core/Container";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center"
+  }
+}));
 
 export default function Notes() {
   const [notes, setNotes] = useState("");
@@ -60,8 +73,13 @@ export default function Notes() {
     localStorage.setItem("plantImage", "");
   }
 
+  const classes = useStyles();
+
   return (
-    <div style={{ textAlign: "center" }}>
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+
+      <div className={classes.paper}>
       <h1>Additional Notes?</h1>
       <form>
         <TextField
@@ -76,6 +94,7 @@ export default function Notes() {
       <Button  onClick={saveNotes} />
       {/* href="Table" */}
     </div>
+    </Container>
   );
 }
 

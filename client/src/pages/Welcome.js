@@ -1,14 +1,17 @@
 import React from "react";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Button from "@material-ui/core/Button";
+import Button from "../components/AddBtn";
 import { makeStyles } from "@material-ui/core/styles";
-import teal from "@material-ui/core/colors/teal";
 
 const useStyles = makeStyles(theme => ({
-    submit: {
-        margin: theme.spacing(2, 0, 2)
-      }
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center"
+  }
 }));
 
 export default function Welcome() {
@@ -17,18 +20,20 @@ export default function Welcome() {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <h1>Welcome plant lovers!</h1>
-      <h2>Time to add a plant!</h2>
-      <Button
-        type="submit"
-        href="Name"
-        fullWidth
-        variant="contained"
-        color="primary"
-        className={classes.submit}
-      >
-        Add A Plant
-      </Button>
+      <div className={classes.paper}>
+        <h1>Welcome plant lovers!</h1>
+        <h2>Time to add a plant!</h2>
+        <Button
+          type="submit"
+          href="Name"
+          fullWidth
+          variant="contained"
+          color="primary"
+          className={classes.submit}
+        >
+          Add A Plant
+        </Button>
+      </div>
     </Container>
   );
 }
