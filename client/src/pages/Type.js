@@ -75,20 +75,19 @@ export default function Type() {
       <CssBaseline />
 
       <div className={classes.paper}>
-      <h1>What's the type of this plant?</h1>
-      <form>
-        <TextField
-          id="name-field"
-          placeholder="monstera"
-          label=""
-          onChange={updateInput}
-        />
-      </form>
+        <h1>What's the type of this plant?</h1>
+        <form>
+          <TextField
+            id="name-field"
+            placeholder="monstera"
+            label=""
+            onChange={updateInput}
+          />
+        </form>
 
-      <Button href="WaterSchedule" onClick={saveType} />
-    </div>
+        <Button href="WaterSchedule" onClick={saveType} />
+      </div>
     </Container>
-
   );
 }
 
