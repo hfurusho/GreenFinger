@@ -11,6 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import authContext from "../authContext";
+import teal from "@material-ui/core/colors/teal";
 import classnames from "classnames";
 
 const useStyles = makeStyles(theme => ({
@@ -22,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: "primary"
+    backgroundColor: "teal"
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -30,6 +31,9 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2)
+  },
+  link: {
+    color: "teal"
   }
 }));
 
@@ -153,7 +157,7 @@ export default function SignUp(props) {
             href="/welcome"
             fullWidth
             variant="contained"
-            color="primary"
+            style={{ color: "#fff", background: teal[500]}}
             className={classes.submit}
             onClick={handleSubmit}
           >
@@ -162,7 +166,7 @@ export default function SignUp(props) {
           {/* href not working ??????? */}
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="SignIn" variant="body2">
+              <Link href="SignIn" variant="body2" className={classes.link}>
                 Already have an account? Sign in
               </Link>
             </Grid>
