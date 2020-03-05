@@ -7,7 +7,9 @@ export default function Notes() {
   const [notes, setNotes] = useState("");
 
   function handleDataSubmit(plantObject) {
-    //console.log("here", plantObject);
+    console.log("API.savePlant FIRED")
+    console.log("API", plantObject);
+    
     API.savePlant({
       name: plantObject.name,
       location: plantObject.location,
@@ -17,8 +19,7 @@ export default function Notes() {
       waterTime: plantObject.waterTime,
       notes: plantObject.notes
     })
-      // .then(res => loadPlants())
-      .catch(err => console.log(err));
+    .catch(err => console.log(err));
   }
 
   //functions for notes -------------------
@@ -39,9 +40,9 @@ export default function Notes() {
       date: localStorage.getItem("date"),
       time: localStorage.getItem("time"),
       period: localStorage.getItem("period"),
-      notes: localStorage.getItem("plantNotes")
+      notes: localStorage.getItem("plantNotes"),
     };
-    //console.log(plantObject);
+    console.log("localStorage", plantObject);
 
     //send to MongoDB as object;
     handleDataSubmit(plantObject);
@@ -74,13 +75,6 @@ export default function Notes() {
   );
 }
 
-//-----------------------------------------
-// next steps:
-//   1. read all local storage values;
-//   2. send to MongoDB as object;
-//   3. clear local storage to blank: plantName="" ;
-// button click -> saveNote -> handleDataSubmit() to Mongo
-
 // Deletes a plant from the database with a given id, then reloads plants from the db
 // function deletePlant(id) {
 //   API.deletePlant(id)
@@ -88,21 +82,27 @@ export default function Notes() {
 //     .catch(err => console.log(err));
 // }
 // Loads all plants and sets them to plantObject
-  // function loadPlants() {
-  //   API.getPlants()
-  //     .then(res => setPlantObject(res.data))
-  //     .catch(err => console.log(err));
-  // }
+// function loadPlants() {
+//   API.getPlants()
+//     .then(res => setPlantObject(res.data))
+//     .catch(err => console.log(err));
+// }
 
-  //for testing with backend, add useEffect in line 1
-  // useEffect(() => {
-  //   const plantData = {
-  //     name: "cactus",
-  //     location: "kitchen",
-  //     startDate: "1992-10-16",
-  //     period: 40,
-  //     waterTime: "1992-10-16",
-  //     notes: "no light"
-  //   };
-  //    API.savePlant(plantData);
-  // }, []);
+//for testing with backend, add useEffect in line 1
+// useEffect(() => {
+//   const plantData = {
+//     name: "cactus",
+//     location: "kitchen",
+//     startDate: "1992-10-16",
+//     period: 40,
+//     waterTime: "1992-10-16",
+//     notes: "no light"
+//   };
+//    API.savePlant(plantData);
+// }, []);
+
+// next steps:
+//   1. read all local storage values;
+//   2. send to MongoDB as object;
+//   3. clear local storage to blank: plantName="" ;
+// button click -> saveNote -> handleDataSubmit() to Mongo
