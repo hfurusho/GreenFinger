@@ -75,6 +75,7 @@ export default function Type() {
       <CssBaseline />
 
       <div className={classes.paper}>
+
       <h1>What's the type of this plant?</h1>
       <form>
         <TextField
@@ -88,7 +89,6 @@ export default function Type() {
       <Button href="WaterSchedule" onClick={async() => {await saveType()}} />
     </div>
     </Container>
-
   );
 }
 
