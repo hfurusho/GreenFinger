@@ -17,6 +17,22 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  createAndSave: function(req, res) {
+    const userId = req.params.id;
+    const { ...plantData } = req.body;
+    db.Users.findById(userId).then(user => {
+      const plant = new db.Plant(plantData);
+      plant.save(function(err, plant) {
+        if (err) throw err;
+        user.plants.push(plant._id);
+        user.save(function(err) {
+          if (err) throw err;
+          console.log("Plant saved to user!");
+          return res.json(user);
+        });
+      });
+    });
+  },
   update: function(req, res) {
     db.Plant.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
