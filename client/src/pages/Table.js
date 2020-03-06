@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
+import API from "../utils/API";
 import { NavLink } from "react-router-dom";
 import Link from "@material-ui/core/Link";
 import Table from "@material-ui/core/Table";
@@ -12,6 +13,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 
+
 const useStyles = makeStyles(theme => ({
   seeMore: {
     marginTop: theme.spacing(3)
@@ -21,13 +23,31 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+export default function FullTable() {
+  const [plants, setPlants] = useState([]);
+
+useEffect(() => {
+  loadPlants()
+}, [])
+
+function loadPlants() {
+  API.getPlants()
+    .then(function(res){
+      setPlants(res.data)
+      console.log(res.data);
+    })   
+    .catch(err => console.log(err));
+};
+
 // Generate Order Data
 function createData(img, name, location) {
-  return { img, name, location };
+  const plantImage = img;
+  const plantName = name;
+  const plantLocation = location;
+  return { plantImage, plantName, plantLocation };
 }
 // placeholder data
 const rows = [
-  createData("cactus.jpg", "cactus", "kitchen"),
   createData("zz.jpg", "zz plant", "livingroom"),
   createData("snakePlant.jpg", "snake plant", "bathroom"),
   createData("monstera.jpg", "monstera", "livingroom"),
@@ -37,8 +57,6 @@ const rows = [
 function preventDefault(event) {
   event.preventDefault();
 }
-
-export default function FullTable() {
   const classes = useStyles();
 
   return (
@@ -47,7 +65,6 @@ export default function FullTable() {
 
       <h1>All Plants：</h1>
       <TableContainer component={Paper}>
-        {" "}
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -61,11 +78,8 @@ export default function FullTable() {
             {rows.map(row => (
               // <NavLink> to Specify Which Element in a Navigation Bar Is Active
               <TableRow key={row.name}>
-                <NavLink
-                  to={"/plants/" + row.name}
-                  data-some-attribute="some-value"
-                >
-                  <TableCell>{row.img}</TableCell>
+                <NavLink to={"/plants/" + row.name} data-some-attribute="some-value">
+                  <TableCell>{row.plantImage}</TableCell>
                   <TableCell>{row.name}</TableCell>
                   <TableCell>{row.location}</TableCell>
                   {/* <TableCell align="right">{row.amount}</TableCell> */}
