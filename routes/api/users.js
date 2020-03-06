@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
+const passport = require("passport");
 
 // Load input validation
 const validateRegisterInput = require("../../validation/register");
@@ -104,5 +105,25 @@ router.post("/login", (req, res) => {
     });
   });
 });
+
+// @route get api/users/plants
+// @desc Gets user's plants
+// @access Public
+router.get(
+  "/plants/:id",
+  // passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const userId = req.params.id;
+
+    User.findById(userId)
+      .populate("plants")
+      .then(user => {
+        return res.json(user.plants);
+      })
+      .catch(err => {
+        res.status(422).json(err);
+      });
+  }
+);
 
 module.exports = router;
