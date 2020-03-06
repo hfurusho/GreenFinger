@@ -91,8 +91,6 @@ function preventDefault(event) {
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
-
 
       <div className={classes.seeMore}>
         <Link color="primary" href="#" onClick={preventDefault}>
@@ -105,9 +103,7 @@ function preventDefault(event) {
       <img src={Logo} style={{ width: 100 }} alt="" />
 
     </TableContainer>
-
     </Container>
-
   );
 }
 
