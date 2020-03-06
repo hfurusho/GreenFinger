@@ -12,6 +12,8 @@ import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
+import Logo from "../assets/logo.png";
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -64,6 +66,7 @@ function preventDefault(event) {
       <CssBaseline />
 
       <h1>All Plants：</h1>
+
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
@@ -90,12 +93,21 @@ function preventDefault(event) {
         </Table>
       </TableContainer>
 
+
       <div className={classes.seeMore}>
         <Link color="primary" href="#" onClick={preventDefault}>
+          <br />
           See more plants
         </Link>
       </div>
+
+      <br />
+      <img src={Logo} style={{ width: 100 }} alt="" />
+
+    </TableContainer>
+
     </Container>
+
   );
 }
 
