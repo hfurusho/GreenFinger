@@ -12,13 +12,16 @@ import teal from "@material-ui/core/colors/teal";
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(10),
     display: "flex",
     flexDirection: "column",
     alignItems: "center"
   },
+  title: {
+    color: "teal"
+  },
   submit: {
-    margin: theme.spacing(2, 0, 2)
+    margin: theme.spacing(12, 0, 2)
   },
   link: {
     color: "teal"
@@ -33,10 +36,11 @@ export default function LandingPage() {
       <CssBaseline />
 
       <div className={classes.paper}>
-        <img src={Logo} style={{ width: 50 }} alt="" />
-        <Typography component="h1" variant="h5">
+        <img src={Logo} style={{ width: 80 }} alt="logo" />
+        <h1 className={classes.title}> 
           Thrive
-        </Typography>
+        </h1>
+        {/* variant="h5" style={{ fontFamily: 'Montserrat, sans-serif;' }} */}
         <Button
           href="SignUp"
           type="submit"
@@ -47,7 +51,7 @@ export default function LandingPage() {
           Get Started with Thrive
         </Button>
 
-        <Grid container justify="flex-end">
+        <Grid container justify="center">
           <Grid item>
             <Link href="SignIn" variant="body2" className={classes.link}>
               Already have an account? Sign in
