@@ -6,7 +6,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import Cactus2 from "../assets/cactus2.png";
 
-
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -17,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Type() {
+export default function Type(props) {
   const [type, setType] = useState("");
 
   //should I use useEffect here or no?
@@ -46,12 +45,15 @@ export default function Type() {
         return response.json();
       })
       .then(function(data) {
-        const imageUrl = data.hits[0].webformatURL;
+        const imageUrl =
+          data.hits[0].webformatURL ||
+          "https://pixabay.com/get/52e6d14b4c53ad14f6da8c7dda79367b1137dbe753526c48702778d09044c150bd_640.jpg";
         console.log("api call result", data);
         console.log("imageUrl", imageUrl);
 
         saveImage(imageUrl);
-      });
+      })
+      .then(() => props.history.push("WaterSchedule"));
   }
 
   function saveImage(imgUrl) {
@@ -63,7 +65,7 @@ export default function Type() {
     console.log("saveType fired");
     localStorage.setItem("plantType", type); //where is type defined?
 
-    searchImage(type);
+    await searchImage(type);
   }
 
   function updateInput(event) {
@@ -77,24 +79,25 @@ export default function Type() {
       <CssBaseline />
 
       <div className={classes.paper}>
+        <h1>What's the type of this plant?</h1>
+        <form>
+          <TextField
+            id="name-field"
+            placeholder="i.e. monstera"
+            label=""
+            variant="filled"
+            onChange={updateInput}
+          />
+        </form>
 
-      <h1>What's the type of this plant?</h1>
-      <form>
-        <TextField
-          id="name-field"
-          placeholder="i.e. monstera"
-          label=""
-          variant="filled"
-          onChange={updateInput}
+        <Button
+          onClick={async () => {
+            await saveType();
+          }}
         />
-      </form>
-
-      <Button href="WaterSchedule" onClick={async() => {await saveType()}} />
-      <img src={Cactus2} style={{ width: 100 }} alt="" />
-
-    </div>
+        <img src={Cactus2} style={{ width: 100 }} alt="" />
+      </div>
     </Container>
-
   );
 }
 

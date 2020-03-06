@@ -6,7 +6,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import Cactus from "../assets/cactus1.png";
 
-
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -17,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Name() {
+export default function Name(props) {
   // constructor(props) {
   //   super(props);
   //   // this.classes = this.useStyles();
@@ -42,6 +41,7 @@ export default function Name() {
     // let name = this.state.name;
     // alert(name);
     localStorage.setItem("plantName", name);
+    props.history.push("Location");
   }
 
   return (
@@ -58,12 +58,12 @@ export default function Name() {
             label=""
             variant="filled"
             onChange={updateInput}
+            required
           />
         </form>
 
-        <Button href="Location" onClick={saveName} />
+        <Button onClick={saveName} />
         <img src={Cactus} style={{ width: 100 }} alt="" />
-
       </div>
     </Container>
   );
