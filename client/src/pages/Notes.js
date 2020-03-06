@@ -33,7 +33,6 @@ export default function Notes() {
       plantNotes: plantObject.plantNotes,
       plantImage: plantObject.plantImage
     })
-    // .catch(err => console.log(err));
   }
 
   //functions for notes -------------------
@@ -92,8 +91,8 @@ export default function Notes() {
         />
       </form>
 
-      <Button  onClick={saveNotes} />
-      {/* href="Table" */}
+      <Button href="Table" onClick={saveNotes} />
+      
     </div>
     </Container>
   );
