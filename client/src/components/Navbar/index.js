@@ -8,27 +8,18 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import FaceIcon from '@material-ui/icons/Face';
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme =>({
   root: {
-    width: 500,
-    marginTop: 150,
-  },
-});
-
-/*
-function HomeButton() {
-  return (<BottomNavigationAction label="" value="" href="/" icon={<HomeIcon />} />);
-}
-
-function AddPlant() {
-  return (<BottomNavigationAction label="" value="Name" href="/name" icon={<AddCircleIcon />} />);
-}
-
-function User() {
-  return (<BottomNavigationAction label="" value="Profile" href="/table" icon={<FaceIcon />} />);
-}
-
-*/
+    width: 400,
+  
+    // width: "100%",
+    // position: 'fixed',
+    // bottom: 0
+    // marginTop: 150,
+    // padding: theme.spacing(3, 2),
+    // marginTop: 'auto'
+  }
+}));
 
 export default function LabelBottomNavigation() {
   const classes = useStyles();
@@ -38,15 +29,12 @@ export default function LabelBottomNavigation() {
     setValue(newValue);
   };
 
-
   return (
-
-    
-        <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
-          <BottomNavigationAction label="" value="Index" href="/" icon={<HomeIcon />} />
-          <BottomNavigationAction label="" value="Name" href="name" icon={<AddCircleIcon />} />
-          <BottomNavigationAction label="" value="Profile" href="table" icon={<FaceIcon />} />
-        </BottomNavigation>
+    <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
+      <BottomNavigationAction label="" value="Index" href="/" icon={<HomeIcon />} />
+      <BottomNavigationAction label="" value="Name" href="name" icon={<AddCircleIcon />} />
+      <BottomNavigationAction label="" value="table" href="table" icon={<FaceIcon />} />
+    </BottomNavigation>
       );
     }
   
@@ -61,4 +49,19 @@ export default function LabelBottomNavigation() {
 
   );
 }
+*/
+
+/*
+function HomeButton() {
+  return (<BottomNavigationAction label="" value="" href="/" icon={<HomeIcon />} />);
+}
+
+function AddPlant() {
+  return (<BottomNavigationAction label="" value="Name" href="/name" icon={<AddCircleIcon />} />);
+}
+
+function User() {
+  return (<BottomNavigationAction label="" value="Profile" href="/table" icon={<FaceIcon />} />);
+}
+
 */
