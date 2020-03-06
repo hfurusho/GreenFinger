@@ -1,13 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import API from "../utils/API";
 import { TextField } from "@material-ui/core";
 import Button from "../components/SubmitBtn";
+import authContext from "../authContext";
 
 export default function Notes() {
   const [notes, setNotes] = useState("");
+  const context = useContext(authContext);
+
+  useEffect(() => {
+    const plantData = {
+      name: "cactus",
+      location: "kitchen",
+      startDate: "1992-10-16",
+      period: 40,
+      waterTime: "1992-10-16",
+      notes: "no light"
+    };
+    const userId = "5e61c8e27e8e6225c4e5390e";
+    API.createAndSave(plantData, userId);
+  }, []);
 
   function handleDataSubmit(plantObject) {
-    console.log("API.savePlant FIRED")
+    console.log("API.savePlant FIRED");
     console.log("API", plantObject);
 
     API.savePlant({
@@ -19,7 +34,7 @@ export default function Notes() {
       time: plantObject.time,
       notes: plantObject.notes,
       image: plantObject.image
-    })
+    });
     // .catch(err => console.log(err));
   }
 
@@ -72,13 +87,11 @@ export default function Notes() {
         />
       </form>
 
-      <Button  onClick={saveNotes} />
+      <Button onClick={saveNotes} />
       {/* href="Table" */}
     </div>
   );
 }
-
-
 
 // Deletes a plant from the database with a given id, then reloads plants from the db
 // function deletePlant(id) {
