@@ -2,16 +2,16 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import Container from '@material-ui/core/Container';
+//import Container from '@material-ui/core/Container';
 import HomeIcon from '@material-ui/icons/Home';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import FaceIcon from '@material-ui/icons/Face';
-import { BrowserRouter as Route } from "react-router-dom";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
     width: 500,
+    marginTop: 150,
   },
 });
 
@@ -32,7 +32,7 @@ function User() {
 
 export default function LabelBottomNavigation() {
   const classes = useStyles();
-  const [value, setValue] = React.useState('recents');
+  const [value, setValue] = React.useState('');
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

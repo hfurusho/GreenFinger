@@ -33,7 +33,7 @@ export default function LandingPage() {
       <CssBaseline />
 
       <div className={classes.paper}>
-        <img src={Logo} style={{ width: 100 }} alt="" />
+        <img src={Logo} style={{ width: 50 }} alt="" />
         <Typography component="h1" variant="h5">
           Thrive
         </Typography>
