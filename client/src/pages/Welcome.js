@@ -6,9 +6,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import teal from "@material-ui/core/colors/teal";
 
 const useStyles = makeStyles(theme => ({
-    submit: {
-        margin: theme.spacing(2, 0, 2)
-      }
+  submit: {
+    margin: theme.spacing(2, 0, 2)
+  }
 }));
 
 export default function Welcome() {
