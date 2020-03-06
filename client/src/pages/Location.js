@@ -35,7 +35,7 @@ export default function Location() {
       <CssBaseline />
 
       <div className={classes.paper}>
-        <h1>Where's the location of this plant?</h1>
+        <h2>Where's the location of this plant?</h2>
 
         <form>
           <TextField

@@ -49,7 +49,7 @@ export default function Name() {
       <CssBaseline />
 
       <div className={classes.paper}>
-        <h1>What's the name of your plant?</h1>
+        <h2>What's the name of your plant?</h2>
 
         <form>
           <TextField
@@ -62,7 +62,8 @@ export default function Name() {
         </form>
 
         <Button href="Location" onClick={saveName} />
-        <img src={Cactus} style={{ width: 100 }} alt="" />
+
+        <img src={Cactus} style={{ width: 80 }} alt="cactus" />
 
       </div>
     </Container>

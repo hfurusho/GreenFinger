@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
+// import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
@@ -18,6 +18,11 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center"
   },
   title: {
+    fontFamily: "Montserrat",
+    color: "teal"
+  },
+  intro: {
+    fontSize: 14,
     color: "teal"
   },
   submit: {
@@ -37,10 +42,11 @@ export default function LandingPage() {
 
       <div className={classes.paper}>
         <img src={Logo} style={{ width: 80 }} alt="logo" />
-        <h1 className={classes.title}> 
-          Thrive
-        </h1>
+        <h1 className={classes.title}> <strong>Thrive</strong></h1>
         {/* variant="h5" style={{ fontFamily: 'Montserrat, sans-serif;' }} */}
+        
+        <p className={classes.intro}>Track water schedules for your houseplants</p>
+        
         <Button
           href="SignUp"
           type="submit"

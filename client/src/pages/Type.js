@@ -78,7 +78,7 @@ export default function Type() {
 
       <div className={classes.paper}>
 
-      <h1>What's the type of this plant?</h1>
+      <h2>What's the type of this plant?</h2>
       <form>
         <TextField
           id="name-field"
