@@ -10,6 +10,7 @@ router
   .route("/:id")
   .get(plantsController.findById)
   .put(plantsController.update)
+  .post(plantsController.createAndSave)
   .delete(plantsController.remove);
 
 module.exports = router;

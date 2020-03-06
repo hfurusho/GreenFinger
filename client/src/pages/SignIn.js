@@ -66,7 +66,7 @@ export default function SignIn(props) {
 
   useEffect(() => {
     if (isAuthenticated) {
-      props.history.push("/Table");
+      props.history.push("/Welcome"); // Re-directs to Welcome page if user successfully logs in
     }
   }, [isAuthenticated]);
 
@@ -114,10 +114,9 @@ export default function SignIn(props) {
           />
           <Button
             type="submit"
-            href="Welcome"
             fullWidth
             variant="contained"
-            style={{ color: "#fff", background: teal[500]}}
+            style={{ color: "#fff", background: teal[500] }}
             className={classes.submit}
           >
             Sign In

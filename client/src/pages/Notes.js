@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import API from "../utils/API";
 import { TextField } from "@material-ui/core";
 import Button from "../components/SubmitBtn";
@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    textAlign: "center",
+    textAlign: "center"
   }
 }));
 
@@ -20,7 +20,7 @@ export default function Notes() {
   const [notes, setNotes] = useState("");
 
   function handleDataSubmit(plantObject) {
-    console.log("API.savePlant FIRED")
+    console.log("API.savePlant FIRED");
     console.log("API", plantObject);
 
     API.savePlant({
@@ -32,7 +32,7 @@ export default function Notes() {
       plantTime: plantObject.plantTime,
       plantNotes: plantObject.plantNotes,
       plantImage: plantObject.plantImage
-    })
+    });
   }
 
   //functions for notes -------------------
@@ -79,26 +79,23 @@ export default function Notes() {
       <CssBaseline />
 
       <div className={classes.paper}>
-      <h1>Additional Notes?</h1>
-      <form>
-        <TextField
-          id="name-field"
-          placeholder="i.e. Indirect sunlight"
-          label=""
-          variant="filled"
-          value={notes}
-          onChange={updateInput}
-        />
-      </form>
+        <h1>Additional Notes?</h1>
+        <form>
+          <TextField
+            id="name-field"
+            placeholder="i.e. Indirect sunlight"
+            label=""
+            variant="filled"
+            value={notes}
+            onChange={updateInput}
+          />
+        </form>
 
-      <Button href="Table" onClick={saveNotes} />
-      
-    </div>
+        <Button href="Table" onClick={saveNotes} />
+      </div>
     </Container>
   );
 }
-
-
 
 // Deletes a plant from the database with a given id, then reloads plants from the db
 // function deletePlant(id) {
