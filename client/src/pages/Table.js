@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import API from "../utils/API";
 import { NavLink } from "react-router-dom";
 import Link from "@material-ui/core/Link";
@@ -13,6 +13,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Logo from "../assets/logo.png";
+import axios from "axios";
+import authContext from "../authContext";
 
 const useStyles = makeStyles(theme => ({
   seeMore: {
@@ -25,9 +27,13 @@ const useStyles = makeStyles(theme => ({
 
 export default function FullTable() {
   const [plants, setPlants] = useState([]);
+  const { user } = useContext(authContext);
 
   useEffect(() => {
-    loadPlants();
+    const id = user.id;
+    axios.get("/api/users/plants/" + id).then(res => {
+      setPlants(res.data);
+    });
   }, []);
 
   function loadPlants() {
