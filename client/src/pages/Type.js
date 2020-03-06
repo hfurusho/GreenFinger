@@ -4,6 +4,8 @@ import Button from "../components/ContinueBtn";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
+import Cactus2 from "../assets/cactus2.png";
+
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -79,13 +81,16 @@ export default function Type() {
       <form>
         <TextField
           id="name-field"
-          placeholder="monstera"
+          placeholder="i.e. monstera"
           label=""
+          variant="filled"
           onChange={updateInput}
         />
       </form>
 
       <Button href="WaterSchedule" onClick={async() => {await saveType()}} />
+      <img src={Cactus2} style={{ width: 100 }} alt="" />
+
     </div>
     </Container>
 

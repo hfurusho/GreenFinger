@@ -9,6 +9,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
+import Logo from "../assets/logo.png";
+
 
 const useStyles = makeStyles({
   table: {
@@ -48,32 +50,36 @@ export default function FullTable() {
         <TableHead>
           <TableRow>
             <TableCell>Image</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Location</TableCell>
+            <TableCell align="right">Name</TableCell>
+            <TableCell align="right">Location</TableCell>
           </TableRow>
         </TableHead>
 
         <TableBody>
           {rows.map(row => (
             // <NavLink> to Specify Which Element in a Navigation Bar Is Active
-              <TableRow key={row.name}>
-                <NavLink to={"/plants/" + row.name} data-some-attribute="some-value">
-                <TableCell>
+            <TableRow key={row.name}>
+              <NavLink to={"/plants/" + row.name} data-some-attribute="some-value">
+                <TableCell align="right">
                   {row.img}</TableCell>
-                <TableCell>{row.name}</TableCell>
-                <TableCell>{row.location}</TableCell>
+                <TableCell align="right">{row.name}</TableCell>
+                <TableCell align="right">{row.location}</TableCell>
                 {/* <TableCell align="right">{row.amount}</TableCell> */}
-            </NavLink>
-              </TableRow>
+              </NavLink>
+            </TableRow>
             // </Link>
           ))}
         </TableBody>
       </Table>
       <div className={classes.seeMore}>
         <Link color="primary" href="#" onClick={preventDefault}>
+          <br />
           See more plants
         </Link>
       </div>
+      <br />
+      <img src={Logo} style={{ width: 100 }} alt="" />
+
     </TableContainer>
   );
 }

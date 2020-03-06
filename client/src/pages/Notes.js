@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    textAlign: "center"
+    textAlign: "center",
   }
 }));
 
@@ -84,8 +84,9 @@ export default function Notes() {
       <form>
         <TextField
           id="name-field"
-          placeholder="Bright indirect sunlight"
+          placeholder="i.e. Indirect sunlight"
           label=""
+          variant="filled"
           value={notes}
           onChange={updateInput}
         />

@@ -4,6 +4,8 @@ import Button from "../components/ContinueBtn";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
+import Cactus from "../assets/cactus1.png";
+
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -51,14 +53,17 @@ export default function Name() {
 
         <form>
           <TextField
-            id="name-field"
-            placeholder="monstera ginny"
+            id="filled-basic"
+            placeholder="i.e. cactus"
             label=""
+            variant="filled"
             onChange={updateInput}
           />
         </form>
 
         <Button href="Location" onClick={saveName} />
+        <img src={Cactus} style={{ width: 100 }} alt="" />
+
       </div>
     </Container>
   );

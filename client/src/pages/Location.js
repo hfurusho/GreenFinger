@@ -4,6 +4,8 @@ import Button from "../components/ContinueBtn";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
+import Aloe from "../assets/aloe.png";
+
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -37,14 +39,17 @@ export default function Location() {
 
         <form>
           <TextField
-            id="name-field"
-            placeholder="livingroom"
+            id="filled-basic"
+            placeholder="i.e. livingroom"
             label=""
+            variant="filled"
             onChange={updateInput}
           />
         </form>
 
         <Button href="Type" onClick={saveLocation} />
+        <img src={Aloe} style={{ width: 130 }} alt="" />
+
       </div>
     </Container>
   );
