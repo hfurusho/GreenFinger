@@ -89,6 +89,7 @@ export default function Type() {
       <Button href="WaterSchedule" onClick={async() => {await saveType()}} />
     </div>
     </Container>
+
   );
 }
 
