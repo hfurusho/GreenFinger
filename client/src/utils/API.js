@@ -16,5 +16,10 @@ export default {
   // Saves a plant to the database
   savePlant: function(plantObject) {
     return axios.post("/api/plants", plantObject);
+  },
+  // Saves a plant to the database and also saves it to the user with the given ID.
+  createAndSave: function(plantObject, id) {
+    console.log("IN SRC API CREATE AND SAVE");
+    return axios.post("/api/plants/" + id, plantObject);
   }
 };
