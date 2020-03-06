@@ -10,14 +10,10 @@ import FaceIcon from '@material-ui/icons/Face';
 
 const useStyles = makeStyles(theme =>({
   root: {
-    width: 400,
-  
-    // width: "100%",
-    // position: 'fixed',
-    // bottom: 0
-    // marginTop: 150,
-    // padding: theme.spacing(3, 2),
-    // marginTop: 'auto'
+    width: '0',
+    position: 'fixed',
+    alignContent: 'center',
+    bottom: 0
   }
 }));
 
