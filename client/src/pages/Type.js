@@ -83,7 +83,7 @@ export default function Type(props) {
         <form>
           <TextField
             id="name-field"
-            placeholder="i.e. monstera"
+            placeholder="i.e. cactus"
             label=""
             variant="filled"
             onChange={updateInput}

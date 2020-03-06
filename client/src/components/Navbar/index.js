@@ -11,8 +11,12 @@ import FaceIcon from "@material-ui/icons/Face";
 
 const useStyles = makeStyles({
   root: {
-    width: 500,
-    marginTop: 150
+    //width: 500,
+    width: "0",
+    position: "fixed",
+    alignContent: "center",
+    bottom: 0
+    //marginTop: 150,
   }
 });
 
