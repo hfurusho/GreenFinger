@@ -40,7 +40,7 @@ export default function Location(props) {
         <form>
           <TextField
             id="filled-basic"
-            placeholder="i.e. livingroom"
+            placeholder="i.e. kitchen"
             label=""
             variant="filled"
             onChange={updateInput}

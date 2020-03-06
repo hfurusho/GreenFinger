@@ -54,7 +54,7 @@ export default function Name(props) {
         <form>
           <TextField
             id="filled-basic"
-            placeholder="i.e. cactus"
+            placeholder="i.e. Harry"
             label=""
             variant="filled"
             onChange={updateInput}
