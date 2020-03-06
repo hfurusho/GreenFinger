@@ -24,14 +24,14 @@ export default function Notes() {
     console.log("API", plantObject);
 
     API.savePlant({
-      name: plantObject.name,
-      location: plantObject.location,
-      type: plantObject.type,
-      date: plantObject.date,
-      period: plantObject.period,
-      time: plantObject.time,
-      notes: plantObject.notes,
-      image: plantObject.image
+      plantName: plantObject.plantName,
+      plantLocation: plantObject.plantLocation,
+      plantType: plantObject.plantType,
+      plantStartDate: plantObject.plantStartDate,
+      plantPeriod: plantObject.plantPeriod,
+      plantTime: plantObject.plantTime,
+      plantNotes: plantObject.plantNotes,
+      plantImage: plantObject.plantImage
     })
     // .catch(err => console.log(err));
   }
@@ -48,14 +48,14 @@ export default function Notes() {
     //read all local storage values, put into an object
     let plantObject;
     plantObject = {
-      name: localStorage.getItem("plantName"),
-      location: localStorage.getItem("plantLocation"),
-      type: localStorage.getItem("plantType"),
-      date: localStorage.getItem("date"),
-      time: localStorage.getItem("time"),
-      period: localStorage.getItem("period"),
-      notes: localStorage.getItem("plantNotes"),
-      image: localStorage.getItem("image")
+      plantName: localStorage.getItem("plantName"),
+      plantLocation: localStorage.getItem("plantLocation"),
+      plantType: localStorage.getItem("plantType"),
+      plantStartDate: localStorage.getItem("plantStartDate"),
+      plantTime: localStorage.getItem("plantTime"),
+      plantPeriod: localStorage.getItem("plantPeriod"),
+      plantNotes: localStorage.getItem("plantNotes"),
+      plantImage: localStorage.getItem("plantImage")
     };
     console.log("localStorage", plantObject);
 
@@ -66,10 +66,11 @@ export default function Notes() {
     localStorage.setItem("plantName", "");
     localStorage.setItem("plantLocation", "");
     localStorage.setItem("plantType", "");
-    localStorage.setItem("date", "");
-    localStorage.setItem("time", "");
-    localStorage.setItem("period", "");
+    localStorage.setItem("plantStartDate", "");
+    localStorage.setItem("plantTime", "");
+    localStorage.setItem("plantPeriod", "");
     localStorage.setItem("plantNotes", "");
+    localStorage.setItem("plantImage", "");
   }
 
   const classes = useStyles();

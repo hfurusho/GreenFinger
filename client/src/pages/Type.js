@@ -54,10 +54,10 @@ export default function Type() {
 
   function saveImage(imgUrl) {
     console.log("saveImg fired");
-    localStorage.setItem("image", imgUrl);
+    localStorage.setItem("plantImage", imgUrl);
   }
 
-  function saveType() {
+  async function saveType() {
     console.log("saveType fired");
     localStorage.setItem("plantType", type); //where is type defined?
 
@@ -85,7 +85,7 @@ export default function Type() {
         />
       </form>
 
-      <Button href="WaterSchedule" onClick={saveType} />
+      <Button href="WaterSchedule" onClick={async() => {await saveType()}} />
     </div>
     </Container>
 
