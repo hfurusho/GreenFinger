@@ -1,6 +1,19 @@
 import React, { useState } from "react";
 import { TextField } from "@material-ui/core";
 import Button from "../components/ContinueBtn";
+import Container from "@material-ui/core/Container";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center"
+  }
+}));
 
 export default function Name() {
   // constructor(props) {
@@ -15,8 +28,10 @@ export default function Name() {
   // }
   const [name, setName] = useState("");
 
+  const classes = useStyles();
+
   function updateInput(event) {
-    setName(event.target.value)
+    setName(event.target.value);
   }
 
   function saveName() {
@@ -24,19 +39,27 @@ export default function Name() {
     //grab text from text field and store in local story
     // let name = this.state.name;
     // alert(name);
-    localStorage.setItem("plantName",name);
+    localStorage.setItem("plantName", name);
   }
 
-  
-    return (
-      <div style={{ textAlign: "center" }}>
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+
+      <div className={classes.paper}>
         <h1>What's the name of your plant?</h1>
 
         <form>
-          <TextField id="name-field" placeholder="monstera ginny" label="" onChange={updateInput} />
+          <TextField
+            id="name-field"
+            placeholder="monstera ginny"
+            label=""
+            onChange={updateInput}
+          />
         </form>
 
         <Button href="Location" onClick={saveName} />
       </div>
-    );
-  }
+    </Container>
+  );
+}

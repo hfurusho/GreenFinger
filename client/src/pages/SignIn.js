@@ -12,6 +12,7 @@ import NaturePeopleIcon from "@material-ui/icons/NaturePeople";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import authContext from "../authContext";
+import teal from "@material-ui/core/colors/teal";
 import { datePickerDefaultProps } from "@material-ui/pickers/constants/prop-types";
 
 const useStyles = makeStyles(theme => ({
@@ -23,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main
+    backgroundColor: "teal"
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -31,6 +32,9 @@ const useStyles = makeStyles(theme => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2)
+  },
+  link: {
+    color: "teal"
   }
 }));
 
@@ -110,9 +114,10 @@ export default function SignIn(props) {
           />
           <Button
             type="submit"
+            href="Welcome"
             fullWidth
             variant="contained"
-            color="primary"
+            style={{ color: "#fff", background: teal[500]}}
             className={classes.submit}
           >
             Sign In
@@ -120,12 +125,12 @@ export default function SignIn(props) {
 
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link href="#" variant="body2" className={classes.link}>
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="SignUp" variant="body2">
+              <Link href="SignUp" variant="body2" className={classes.link}>
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

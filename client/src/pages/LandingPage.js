@@ -6,10 +6,9 @@ import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import Logo from "./logo.jpg";
+import Logo from "../assets/logo.png";
+import teal from "@material-ui/core/colors/teal";
 
-import { lightGreen } from "@material-ui/core/colors";
-// import { red } from "@material-ui/core/colors";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -18,12 +17,11 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center"
   },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: { lightGreen }
-  },
   submit: {
     margin: theme.spacing(2, 0, 2)
+  },
+  link: {
+    color: "teal"
   }
 }));
 
@@ -35,30 +33,24 @@ export default function LandingPage() {
       <CssBaseline />
 
       <div className={classes.paper}>
-        <img src={Logo} style= {{ width: 100 }} alt="" />
+        <img src={Logo} style={{ width: 100 }} alt="" />
         <Typography component="h1" variant="h5">
-          GreenThumb
+          Thrive
         </Typography>
         <Button
+          href="SignUp"
           type="submit"
-          href="/name"
-          fullWidth
           variant="contained"
-          color="primary"
+          style={{ color: "#fff", background: teal[500]}}
           className={classes.submit}
         >
-          Get Started
+          Get Started with Thrive
         </Button>
 
-        <h3>Sign Up/ Sign In</h3>
-        <Grid container justify="center">
+        <Grid container justify="flex-end">
           <Grid item>
-            <Link href="SignUp" variant="body2">
-              Sign up
-            </Link>
-            <p> | </p>
-            <Link href="SignIn" variant="body2">
-              Sign in
+            <Link href="SignIn" variant="body2" className={classes.link}>
+              Already have an account? Sign in
             </Link>
           </Grid>
         </Grid>

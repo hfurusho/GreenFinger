@@ -6,7 +6,7 @@ import Container from '@material-ui/core/Container';
 import HomeIcon from '@material-ui/icons/Home';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import FaceIcon from '@material-ui/icons/Face';
-import { BrowserRouter as Route} from "react-router-dom";
+import { BrowserRouter as Route } from "react-router-dom";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -15,6 +15,7 @@ const useStyles = makeStyles({
   },
 });
 
+/*
 function HomeButton() {
   return (<BottomNavigationAction label="" value="" href="/" icon={<HomeIcon />} />);
 }
@@ -24,8 +25,10 @@ function AddPlant() {
 }
 
 function User() {
-  return (<BottomNavigationAction label="" value="Profile" href="/user" icon={<FaceIcon />} />);
+  return (<BottomNavigationAction label="" value="Profile" href="/table" icon={<FaceIcon />} />);
 }
+
+*/
 
 export default function LabelBottomNavigation() {
   const classes = useStyles();
@@ -35,15 +38,27 @@ export default function LabelBottomNavigation() {
     setValue(newValue);
   };
 
+
   return (
 
+    
+        <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
+          <BottomNavigationAction label="" value="Index" href="/" icon={<HomeIcon />} />
+          <BottomNavigationAction label="" value="Name" href="name" icon={<AddCircleIcon />} />
+          <BottomNavigationAction label="" value="Profile" href="table" icon={<FaceIcon />} />
+        </BottomNavigation>
+      );
+    }
+  
+    /*
     <Container>
       <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
-        <Route path={["/name", "/Location", "/WaterSchedule", "/Notes"]} component={HomeButton} />
-        <Route path="/Table" component={AddPlant} />
-        <Route path={["/name", "/Location", "/WaterSchedule", "/Notes"]} component={User} />
+        <Route path={["/name", "/location", "/WaterSchedule", "/notes"]} component={HomeIcon} />
+        <Route path="/table" component={AddPlant} />
+        <Route path={["/name", "/location", "/WaterSchedule", "/notes"]} component={FaceIcon} />
       </BottomNavigation>
     </Container>
 
   );
 }
+*/

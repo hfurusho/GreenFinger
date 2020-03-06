@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import SubmitIcon from '@material-ui/icons/Publish';
-import lime from '@material-ui/core/colors/lime';
+import teal from '@material-ui/core/colors/teal';
 
 
 const useStyles = makeStyles(theme => ({
@@ -22,7 +22,7 @@ export default function ContainedButtons(props) {
             onClick={props.onClick} 
             className={`card-btn ${props["data-value"]}`} 
             {...props} 
-            style={{ background: lime[500]} }
+            style={{ color: "#fff", background: teal[500]}}
             startIcon={<SubmitIcon />}
             variant="contained">
                 Submit
