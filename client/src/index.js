@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import GlobalState from "./GlobalState";
+
 // import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 // import { teal, orange } from "@material-ui/core/colors";
 
@@ -14,7 +16,12 @@ import * as serviceWorker from "./serviceWorker";
 //     }
 //   }
 // });
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <GlobalState>
+    <App />
+  </GlobalState>,
+  document.getElementById("root")
+);
 
 // ReactDOM.render(
 //   <MuiThemeProvider theme={theme}>

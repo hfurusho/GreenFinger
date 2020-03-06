@@ -106,7 +106,6 @@ export default function SignIn(props) {
             autoComplete="current-password"
             onChange={handleChange}
             type="password"
-            autoFocus
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}

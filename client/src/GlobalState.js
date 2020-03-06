@@ -93,7 +93,8 @@ const GlobalState = props => {
         loginUser: loginUser,
         setCurrentUser: setCurrentUser,
         setUserLoading: setUserLoading,
-        logoutUser: logoutUser
+        logoutUser: logoutUser,
+        dispatch
       }}
     >
       {props.children}

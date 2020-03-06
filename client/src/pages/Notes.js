@@ -5,6 +5,7 @@ import Button from "../components/SubmitBtn";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
+import authContext from "../authContext";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -16,23 +17,30 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Notes() {
+export default function Notes(props) {
   const [notes, setNotes] = useState("");
+  const {
+    user: { id: userId }
+  } = useContext(authContext);
 
-  function handleDataSubmit(plantObject) {
+  async function handleDataSubmit(plantObject) {
     console.log("API.savePlant FIRED");
     console.log("API", plantObject);
+    await API.createAndSave(
+      {
+        plantName: plantObject.plantName,
+        plantLocation: plantObject.plantLocation,
+        plantType: plantObject.plantType,
+        plantStartDate: plantObject.plantStartDate,
+        plantPeriod: plantObject.plantPeriod,
+        plantTime: plantObject.plantTime,
+        plantNotes: plantObject.plantNotes,
+        plantImage: plantObject.plantImage
+      },
+      userId
+    );
 
-    API.savePlant({
-      plantName: plantObject.plantName,
-      plantLocation: plantObject.plantLocation,
-      plantType: plantObject.plantType,
-      plantStartDate: plantObject.plantStartDate,
-      plantPeriod: plantObject.plantPeriod,
-      plantTime: plantObject.plantTime,
-      plantNotes: plantObject.plantNotes,
-      plantImage: plantObject.plantImage
-    });
+    props.history.push("Table");
   }
 
   //functions for notes -------------------
@@ -62,14 +70,14 @@ export default function Notes() {
     handleDataSubmit(plantObject);
 
     //clear local storage to blank
-    localStorage.setItem("plantName", "");
-    localStorage.setItem("plantLocation", "");
-    localStorage.setItem("plantType", "");
-    localStorage.setItem("plantStartDate", "");
-    localStorage.setItem("plantTime", "");
-    localStorage.setItem("plantPeriod", "");
-    localStorage.setItem("plantNotes", "");
-    localStorage.setItem("plantImage", "");
+    localStorage.removeItem("plantName");
+    localStorage.removeItem("plantLocation");
+    localStorage.removeItem("plantType");
+    localStorage.removeItem("plantStartDate");
+    localStorage.removeItem("plantTime");
+    localStorage.removeItem("plantPeriod");
+    localStorage.removeItem("plantNotes");
+    localStorage.removeItem("plantImage");
   }
 
   const classes = useStyles();
@@ -91,7 +99,7 @@ export default function Notes() {
           />
         </form>
 
-        <Button href="Table" onClick={saveNotes} />
+        <Button onClick={saveNotes} />
       </div>
     </Container>
   );

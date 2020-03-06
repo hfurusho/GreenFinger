@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Welcome() {
+export default function Welcome(props) {
   const classes = useStyles();
 
   return (
@@ -25,10 +25,10 @@ export default function Welcome() {
         <h2>Time to add a plant!</h2>
         <Button
           type="submit"
-          href="Name"
           fullWidth
           variant="contained"
           color="primary"
+          onClick={() => props.history.push("Name")}
           className={classes.submit}
         >
           Add A Plant

@@ -6,7 +6,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import Aloe from "../assets/aloe.png";
 
-
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -17,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Location() {
+export default function Location(props) {
   const [location, setLocation] = useState("");
 
   function updateInput(event) {
@@ -26,6 +25,7 @@ export default function Location() {
 
   function saveLocation() {
     localStorage.setItem("plantLocation", location);
+    props.history.push("Type");
   }
 
   const classes = useStyles();
@@ -44,12 +44,12 @@ export default function Location() {
             label=""
             variant="filled"
             onChange={updateInput}
+            required
           />
         </form>
 
-        <Button href="Type" onClick={saveLocation} />
+        <Button onClick={saveLocation} />
         <img src={Aloe} style={{ width: 130 }} alt="" />
-
       </div>
     </Container>
   );
