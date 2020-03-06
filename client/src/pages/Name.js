@@ -6,7 +6,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import Cactus from "../assets/cactus1.png";
 
-
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -14,6 +13,15 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     textAlign: "center"
+  },
+  input:{
+    marginTop: theme.spacing(4)
+  },
+  btn:{
+    marginTop: theme.spacing(4)
+  },
+  img:{
+    marginTop: theme.spacing(4)
   }
 }));
 
@@ -51,20 +59,17 @@ export default function Name() {
       <div className={classes.paper}>
         <h2>What's the name of your plant?</h2>
 
-        <form>
-          <TextField
-            id="filled-basic"
-            placeholder="i.e. cactus"
-            label=""
-            variant="filled"
-            onChange={updateInput}
-          />
-        </form>
+        <TextField className={classes.input}
+          id="filled-basic"
+          placeholder="i.e. cactus"
+          label=""
+          variant="filled"
+          onChange={updateInput}
+        />
 
-        <Button href="Location" onClick={saveName} />
+        <Button className={classes.btn} href="Location" onClick={saveName} />
 
-        <img src={Cactus} style={{ width: 80 }} alt="cactus" />
-
+        <img className={classes.img} src={Cactus} style={{ width: 90 }} alt="cactus" />
       </div>
     </Container>
   );

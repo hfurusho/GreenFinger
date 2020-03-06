@@ -15,6 +15,9 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     textAlign: "center"
+  },
+  btn:{
+    marginTop: theme.spacing(6)
   }
 }));
 
@@ -63,8 +66,8 @@ export default function WaterSchedule(props) {
             onTimeChange={handleTimeChange}
             selectedTime={selectedTime}
           />
-          <br />
-          <Button href="Notes" onClick={saveSelectedDate} />
+
+          <Button className={classes.btn} href="Notes" onClick={saveSelectedDate} />
         </div>
       </div>
     </Container>

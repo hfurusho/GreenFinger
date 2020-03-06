@@ -6,7 +6,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import Cactus2 from "../assets/cactus2.png";
 
-
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -14,6 +13,15 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     textAlign: "center"
+  },
+  input:{
+    marginTop: theme.spacing(4)
+  },
+  btn:{
+    marginTop: theme.spacing(4)
+  },
+  img:{
+    marginTop: theme.spacing(6)
   }
 }));
 
@@ -77,24 +85,26 @@ export default function Type() {
       <CssBaseline />
 
       <div className={classes.paper}>
+        <h2>What's the type of this plant?</h2>
 
-      <h2>What's the type of this plant?</h2>
-      <form>
-        <TextField
-          id="name-field"
-          placeholder="i.e. monstera"
-          label=""
-          variant="filled"
-          onChange={updateInput}
+          <TextField className={classes.input}
+            id="name-field"
+            placeholder="i.e. monstera"
+            label=""
+            variant="filled"
+            onChange={updateInput}
+          />
+
+        <Button className={classes.btn}
+          href="WaterSchedule"
+          onClick={async () => {
+            await saveType();
+          }}
         />
-      </form>
-
-      <Button href="WaterSchedule" onClick={async() => {await saveType()}} />
-      <img src={Cactus2} style={{ width: 100 }} alt="" />
-
-    </div>
+        
+        <img className={classes.img} src={Cactus2} style={{ width: 100 }} alt="cactus2" />
+      </div>
     </Container>
-
   );
 }
 
