@@ -2,6 +2,19 @@ import React, { useState, useContext, useEffect } from "react";
 import API from "../utils/API";
 import { TextField } from "@material-ui/core";
 import Button from "../components/SubmitBtn";
+import Container from "@material-ui/core/Container";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center"
+  }
+}));
 
 export default function Notes() {
   const [notes, setNotes] = useState("");
@@ -11,16 +24,15 @@ export default function Notes() {
     console.log("API", plantObject);
 
     API.savePlant({
-      name: plantObject.name,
-      location: plantObject.location,
-      type: plantObject.type,
-      date: plantObject.date,
-      period: plantObject.period,
-      time: plantObject.time,
-      notes: plantObject.notes,
-      image: plantObject.image
+      plantName: plantObject.plantName,
+      plantLocation: plantObject.plantLocation,
+      plantType: plantObject.plantType,
+      plantStartDate: plantObject.plantStartDate,
+      plantPeriod: plantObject.plantPeriod,
+      plantTime: plantObject.plantTime,
+      plantNotes: plantObject.plantNotes,
+      plantImage: plantObject.plantImage
     });
-    // .catch(err => console.log(err));
   }
 
   //functions for notes -------------------
@@ -35,14 +47,14 @@ export default function Notes() {
     //read all local storage values, put into an object
     let plantObject;
     plantObject = {
-      name: localStorage.getItem("plantName"),
-      location: localStorage.getItem("plantLocation"),
-      type: localStorage.getItem("plantType"),
-      date: localStorage.getItem("date"),
-      time: localStorage.getItem("time"),
-      period: localStorage.getItem("period"),
-      notes: localStorage.getItem("plantNotes"),
-      image: localStorage.getItem("image")
+      plantName: localStorage.getItem("plantName"),
+      plantLocation: localStorage.getItem("plantLocation"),
+      plantType: localStorage.getItem("plantType"),
+      plantStartDate: localStorage.getItem("plantStartDate"),
+      plantTime: localStorage.getItem("plantTime"),
+      plantPeriod: localStorage.getItem("plantPeriod"),
+      plantNotes: localStorage.getItem("plantNotes"),
+      plantImage: localStorage.getItem("plantImage")
     };
     console.log("localStorage", plantObject);
 
@@ -53,28 +65,34 @@ export default function Notes() {
     localStorage.setItem("plantName", "");
     localStorage.setItem("plantLocation", "");
     localStorage.setItem("plantType", "");
-    localStorage.setItem("date", "");
-    localStorage.setItem("time", "");
-    localStorage.setItem("period", "");
+    localStorage.setItem("plantStartDate", "");
+    localStorage.setItem("plantTime", "");
+    localStorage.setItem("plantPeriod", "");
     localStorage.setItem("plantNotes", "");
+    localStorage.setItem("plantImage", "");
   }
 
-  return (
-    <div style={{ textAlign: "center" }}>
-      <h1>Additional Notes?</h1>
-      <form>
-        <TextField
-          id="name-field"
-          placeholder="Bright indirect sunlight"
-          label=""
-          value={notes}
-          onChange={updateInput}
-        />
-      </form>
+  const classes = useStyles();
 
-      <Button onClick={saveNotes} />
-      {/* href="Table" */}
-    </div>
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+
+      <div className={classes.paper}>
+        <h1>Additional Notes?</h1>
+        <form>
+          <TextField
+            id="name-field"
+            placeholder="Bright indirect sunlight"
+            label=""
+            value={notes}
+            onChange={updateInput}
+          />
+        </form>
+
+        <Button href="Table" onClick={saveNotes} />
+      </div>
+    </Container>
   );
 }
 
