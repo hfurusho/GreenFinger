@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import API from "../utils/API";
 import { NavLink } from "react-router-dom";
 import Link from "@material-ui/core/Link";
@@ -13,8 +13,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import Logo from "../assets/logo.png";
-
-
+import axios from "axios";
+import authContext from "../authContext";
 
 const useStyles = makeStyles(theme => ({
   seeMore: {
@@ -27,38 +27,42 @@ const useStyles = makeStyles(theme => ({
 
 export default function FullTable() {
   const [plants, setPlants] = useState([]);
+  const { user } = useContext(authContext);
 
-useEffect(() => {
-  loadPlants()
-}, [])
+  useEffect(() => {
+    const id = user.id;
+    axios.get("/api/users/plants/" + id).then(res => {
+      setPlants(res.data);
+    });
+  }, []);
 
-function loadPlants() {
-  API.getPlants()
-    .then(function(res){
-      setPlants(res.data)
-      console.log(res.data);
-    })   
-    .catch(err => console.log(err));
-};
+  function loadPlants() {
+    API.getPlants()
+      .then(function(res) {
+        setPlants(res.data);
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
+  }
 
-// Generate Order Data
-function createData(img, name, location) {
-  const plantImage = img;
-  const plantName = name;
-  const plantLocation = location;
-  return { plantImage, plantName, plantLocation };
-}
-// placeholder data
-const rows = [
-  createData("zz.jpg", "zz plant", "livingroom"),
-  createData("snakePlant.jpg", "snake plant", "bathroom"),
-  createData("monstera.jpg", "monstera", "livingroom"),
-  createData("pothos.jpg", "pothos", "bedroom")
-];
+  // Generate Order Data
+  function createData(img, name, location) {
+    const plantImage = img;
+    const plantName = name;
+    const plantLocation = location;
+    return { plantImage, plantName, plantLocation };
+  }
+  // placeholder data
+  const rows = [
+    createData("zz.jpg", "zz plant", "livingroom"),
+    createData("snakePlant.jpg", "snake plant", "bathroom"),
+    createData("monstera.jpg", "monstera", "livingroom"),
+    createData("pothos.jpg", "pothos", "bedroom")
+  ];
 
-function preventDefault(event) {
-  event.preventDefault();
-}
+  function preventDefault(event) {
+    event.preventDefault();
+  }
   const classes = useStyles();
 
   return (
@@ -81,7 +85,10 @@ function preventDefault(event) {
             {rows.map(row => (
               // <NavLink> to Specify Which Element in a Navigation Bar Is Active
               <TableRow key={row.name}>
-                <NavLink to={"/plants/" + row.name} data-some-attribute="some-value">
+                <NavLink
+                  to={"/plants/" + row.name}
+                  data-some-attribute="some-value"
+                >
                   <TableCell>{row.plantImage}</TableCell>
                   <TableCell>{row.name}</TableCell>
                   <TableCell>{row.location}</TableCell>
@@ -103,6 +110,7 @@ function preventDefault(event) {
       <img src={Logo} style={{ width: 100 }} alt="" />
 
     </TableContainer>
+
     </Container>
   );
 }

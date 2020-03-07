@@ -5,6 +5,7 @@ import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import DatePicker from "../components/DatePicker";
 import TimePicker from "../components/TimePicker";
+
 import { makeStyles } from "@material-ui/core/styles";
 import { format } from "date-fns";
 
@@ -20,6 +21,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(6)
   }
 }));
+
 
 export default function WaterSchedule(props) {
   const [selectedDate, setSelectedDate] = React.useState(
@@ -43,15 +45,18 @@ export default function WaterSchedule(props) {
 
   const classes = useStyles();
 
+
   function saveSelectedDate() {
     localStorage.setItem("plantStartDate", format(selectedDate, "yyyy-MM-dd"));
     localStorage.setItem("plantTime", format(selectedTime, "p"));
     localStorage.setItem("plantPeriod", period);
+    props.history.push("Notes");
   }
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
+
 
       <div className={classes.paper}>
         <div style={{ textAlign: "center" }}>
@@ -69,6 +74,7 @@ export default function WaterSchedule(props) {
 
           <Button className={classes.btn} href="Notes" onClick={saveSelectedDate} />
         </div>
+
       </div>
     </Container>
   );

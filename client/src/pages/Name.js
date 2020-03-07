@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Name() {
+export default function Name(props) {
   // constructor(props) {
   //   super(props);
   //   // this.classes = this.useStyles();
@@ -50,6 +50,7 @@ export default function Name() {
     // let name = this.state.name;
     // alert(name);
     localStorage.setItem("plantName", name);
+    props.history.push("Location");
   }
 
   return (
@@ -58,6 +59,7 @@ export default function Name() {
 
       <div className={classes.paper}>
         <h2>What's the name of your plant?</h2>
+
 
         <TextField className={classes.input}
           id="filled-basic"
@@ -70,6 +72,20 @@ export default function Name() {
         <Button className={classes.btn} href="Location" onClick={saveName} />
 
         <img className={classes.img} src={Cactus} style={{ width: 90 }} alt="cactus" />
+      <form>
+          <TextField
+            id="filled-basic"
+            placeholder="i.e. Harry"
+            label=""
+            variant="filled"
+            onChange={updateInput}
+            required
+          />
+        </form>
+
+        <Button onClick={saveName} />
+        <img src={Cactus} style={{ width: 100 }} alt="" />
+
       </div>
     </Container>
   );

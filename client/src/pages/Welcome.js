@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Welcome() {
+export default function Welcome(props) {
   const classes = useStyles();
 
   return (
@@ -35,10 +35,11 @@ export default function Welcome() {
         
         <Button
           type="submit"
-          href="Name"
           fullWidth
           variant="contained"
+
           className={classes.btn}
+
         >
           Add A Plant
         </Button>

@@ -1,4 +1,5 @@
 import React from "react";
+
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
@@ -7,17 +8,28 @@ import AddCircleIcon from "@material-ui/icons/AddCircle";
 import FaceIcon from "@material-ui/icons/Face";
 import { withRouter } from "react-router-dom";
 
+
 const useStyles = makeStyles(theme => ({
   root: {
+
+
+    //width: 500,
+
     width: "0",
     position: "fixed",
     alignContent: "center",
     bottom: 0
+
   },
   addBtn: {
     marginBottom: theme.spacing(2)
   }
 }));
+=======
+    //marginTop: 150,
+  }
+});
+
 
 const isActive = (history, path) => {
   if (history.location.pathname === path) 
@@ -26,9 +38,13 @@ const isActive = (history, path) => {
 
 // export default function LabelBottomNavigation(history) {
 const Navbar = withRouter(({ history }) => {
-  const classes = useStyles();
+
 
   const [value, setValue] = React.useState("");
+
+
+  const [value, setValue] = React.useState("");
+
 
   // const handleChange = (event, newValue) => {
   //   setValue(newValue);
@@ -71,6 +87,39 @@ const Navbar = withRouter(({ history }) => {
 });
 
 export default Navbar;
+
+  return (
+    <BottomNavigation
+      value={value}
+      onChange={handleChange}
+      className={classes.root}
+    >
+      <BottomNavigationAction
+        label=""
+        value="Index"
+        // href="/"
+        icon={<HomeIcon />}
+        to="/"
+        component={Link}
+      />
+      <BottomNavigationAction
+        label=""
+        value="Name"
+        to="name"
+        icon={<AddCircleIcon />}
+        component={Link}
+      />
+      <BottomNavigationAction
+        label=""
+        value="Profile"
+        to="table"
+        icon={<FaceIcon />}
+        component={Link}
+      />
+    </BottomNavigation>
+  );
+}
+
 
 /*
     <Container>

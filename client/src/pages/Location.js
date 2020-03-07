@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Location() {
+export default function Location(props) {
   const [location, setLocation] = useState("");
 
   function updateInput(event) {
@@ -34,6 +34,7 @@ export default function Location() {
 
   function saveLocation() {
     localStorage.setItem("plantLocation", location);
+    props.history.push("Type");
   }
 
   const classes = useStyles();
@@ -44,6 +45,7 @@ export default function Location() {
 
       <div className={classes.paper}>
         <h2>Where's the location of this plant?</h2>
+
 
         <TextField className={classes.input}
           id="filled-basic"
@@ -56,6 +58,7 @@ export default function Location() {
         <Button className={classes.btn} href="Type" onClick={saveLocation} />
 
         <img className={classes.img} src={Aloe} style={{ width: 100 }} alt="aloe" />
+
       </div>
     </Container>
   );

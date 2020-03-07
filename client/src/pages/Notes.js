@@ -7,6 +7,9 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 import Monstera from "../assets/monstera.png";
 
+import authContext from "../authContext";
+
+
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -26,23 +29,30 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Notes() {
+export default function Notes(props) {
   const [notes, setNotes] = useState("");
+  const {
+    user: { id: userId }
+  } = useContext(authContext);
 
-  function handleDataSubmit(plantObject) {
+  async function handleDataSubmit(plantObject) {
     console.log("API.savePlant FIRED");
     console.log("API", plantObject);
+    await API.createAndSave(
+      {
+        plantName: plantObject.plantName,
+        plantLocation: plantObject.plantLocation,
+        plantType: plantObject.plantType,
+        plantStartDate: plantObject.plantStartDate,
+        plantPeriod: plantObject.plantPeriod,
+        plantTime: plantObject.plantTime,
+        plantNotes: plantObject.plantNotes,
+        plantImage: plantObject.plantImage
+      },
+      userId
+    );
 
-    API.savePlant({
-      plantName: plantObject.plantName,
-      plantLocation: plantObject.plantLocation,
-      plantType: plantObject.plantType,
-      plantStartDate: plantObject.plantStartDate,
-      plantPeriod: plantObject.plantPeriod,
-      plantTime: plantObject.plantTime,
-      plantNotes: plantObject.plantNotes,
-      plantImage: plantObject.plantImage
-    });
+    props.history.push("Table");
   }
 
   //functions for notes -------------------
@@ -72,14 +82,14 @@ export default function Notes() {
     handleDataSubmit(plantObject);
 
     //clear local storage to blank
-    localStorage.setItem("plantName", "");
-    localStorage.setItem("plantLocation", "");
-    localStorage.setItem("plantType", "");
-    localStorage.setItem("plantStartDate", "");
-    localStorage.setItem("plantTime", "");
-    localStorage.setItem("plantPeriod", "");
-    localStorage.setItem("plantNotes", "");
-    localStorage.setItem("plantImage", "");
+    localStorage.removeItem("plantName");
+    localStorage.removeItem("plantLocation");
+    localStorage.removeItem("plantType");
+    localStorage.removeItem("plantStartDate");
+    localStorage.removeItem("plantTime");
+    localStorage.removeItem("plantPeriod");
+    localStorage.removeItem("plantNotes");
+    localStorage.removeItem("plantImage");
   }
 
   const classes = useStyles();
@@ -89,6 +99,7 @@ export default function Notes() {
       <CssBaseline />
 
       <div className={classes.paper}>
+
         <h2>Additional Notes?</h2>
 
         <TextField className={classes.input}
@@ -102,6 +113,7 @@ export default function Notes() {
 
         <Button className={classes.btn} href="Table" onClick={saveNotes} />
         <img className={classes.img} src={Monstera} style={{ width: 120 }} alt="monstera" />
+
       </div>
     </Container>
   );
