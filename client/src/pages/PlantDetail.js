@@ -7,6 +7,13 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
+  paper: {
+    marginTop: theme.spacing(6),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center"
+  },
   link: {
     color: "teal"
   }
@@ -70,7 +77,8 @@ export default function PlantDetail(props) {
       <CssBaseline />
 
       <div className={classes.paper}>
-        <h1>Plant's name: {plant.plantName}</h1>
+        
+        <h2>Plant's name: {plant.plantName}</h2>
         <img src={plant.plantImage} alt={plant.plantName} />
         <h2>Location: {plant.plantLocation}</h2>
         <h2>Plant's type: {plant.plantType}</h2>
