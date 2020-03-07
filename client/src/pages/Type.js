@@ -14,13 +14,13 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     textAlign: "center"
   },
-  input:{
+  input: {
     marginTop: theme.spacing(4)
   },
-  btn:{
+  btn: {
     marginTop: theme.spacing(4)
   },
-  img:{
+  img: {
     marginTop: theme.spacing(6)
   }
 }));
@@ -39,16 +39,6 @@ export default function Type(props) {
     console.log(type);
 
     const queryUrl = `https://pixabay.com/api/?key=15485203-cba91f318bb796f35c4848942&q=${type}&image_type=photo&pretty=true`;
-    // axios.get(queryUrl)
-    //   .then(function(res){
-    //     const imageUrl = res.data.hits[0].webformatURL;
-    //     console.log("api call result", res);
-    //     console.log("imageUrl", imageUrl);
-
-    //     saveImage(imageUrl);
-    //   })
-    //   .catch(err => console.log(err))
-
     fetch(queryUrl)
       .then(function(response) {
         return response.json();
@@ -61,13 +51,13 @@ export default function Type(props) {
         console.log("imageUrl", imageUrl);
 
         saveImage(imageUrl);
-      })
-      .then(() => props.history.push("WaterSchedule"));
+      });
   }
 
   function saveImage(imgUrl) {
     console.log("saveImg fired");
     localStorage.setItem("plantImage", imgUrl);
+    props.history.push("WaterSchedule");
   }
 
   async function saveType() {
@@ -88,30 +78,31 @@ export default function Type(props) {
       <CssBaseline />
 
       <div className={classes.paper}>
-
         <h2>What's the type of this plant?</h2>
 
-          <TextField className={classes.input}
-            id="name-field"
-            placeholder="i.e. monstera"
+        <TextField
+          className={classes.input}
+          id="name-field"
+          placeholder="i.e. monstera"
+          label=""
+          variant="filled"
+          onChange={updateInput}
+        />
 
-            label=""
-            variant="filled"
-            onChange={updateInput}
-          />
-
-
-        <Button className={classes.btn}
+        <Button
+          className={classes.btn}
           href="WaterSchedule"
-
           onClick={async () => {
             await saveType();
           }}
         />
 
-        
-        <img className={classes.img} src={Cactus2} style={{ width: 100 }} alt="cactus2" />
-
+        <img
+          className={classes.img}
+          src={Cactus2}
+          style={{ width: 100 }}
+          alt="cactus2"
+        />
       </div>
     </Container>
   );

@@ -1,92 +1,37 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+//import Container from '@material-ui/core/Container';
 import HomeIcon from "@material-ui/icons/Home";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import FaceIcon from "@material-ui/icons/Face";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   root: {
-
-
     //width: 500,
-
     width: "0",
     position: "fixed",
     alignContent: "center",
     bottom: 0
-
-  },
-  addBtn: {
-    marginBottom: theme.spacing(2)
-  }
-}));
-=======
     //marginTop: 150,
   }
 });
 
-
-const isActive = (history, path) => {
-  if (history.location.pathname === path) 
-    return { color: "#009688"}; //teal
-};
-
-// export default function LabelBottomNavigation(history) {
 const Navbar = withRouter(({ history }) => {
-
-
+  const classes = useStyles();
   const [value, setValue] = React.useState("");
 
+  const isActive = (history, path) => {
+    if (history.location.pathname === path) return { color: "#009688" }; //teal
+  };
 
-  const [value, setValue] = React.useState("");
-
-
-  // const handleChange = (event, newValue) => {
-  //   setValue(newValue);
-  // };
-
-  return (
-    <BottomNavigation
-      value={value}
-      onChange={(newValue) => {
-        setValue(newValue);
-      }}
-      className={classes.root}
-    >
-      <BottomNavigationAction
-        href="/"
-        icon={<HomeIcon />}
-        style={isActive(history, "/")}
-        label=""
-        value="Index"
-      />
-      <BottomNavigationAction
-        href="name"
-        icon={<AddCircleIcon />}
-        style={isActive(history, "/name")}
-        label=""
-        value="Name"
-        className={classes.addBtn}
-      />
-      <BottomNavigationAction
-        href="table"
-        icon={<FaceIcon />}
-        style={
-          (isActive(history, "/table"))
-        }
-        label=""
-        value="table"
-      />
-    </BottomNavigation>
-  );
-});
-
-export default Navbar;
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
     <BottomNavigation
@@ -97,10 +42,10 @@ export default Navbar;
       <BottomNavigationAction
         label=""
         value="Index"
-        // href="/"
         icon={<HomeIcon />}
         to="/"
         component={Link}
+        style={isActive(history, "/")}
       />
       <BottomNavigationAction
         label=""
@@ -108,6 +53,7 @@ export default Navbar;
         to="name"
         icon={<AddCircleIcon />}
         component={Link}
+        style={isActive(history, "/name")}
       />
       <BottomNavigationAction
         label=""
@@ -115,11 +61,13 @@ export default Navbar;
         to="table"
         icon={<FaceIcon />}
         component={Link}
+        style={isActive(history, "/table")}
       />
     </BottomNavigation>
   );
-}
+});
 
+export default Navbar;
 
 /*
     <Container>
@@ -132,19 +80,4 @@ export default Navbar;
 
   );
 }
-*/
-
-/*
-function HomeButton() {
-  return (<BottomNavigationAction label="" value="" href="/" icon={<HomeIcon />} />);
-}
-
-function AddPlant() {
-  return (<BottomNavigationAction label="" value="Name" href="/name" icon={<AddCircleIcon />} />);
-}
-
-function User() {
-  return (<BottomNavigationAction label="" value="Profile" href="/table" icon={<FaceIcon />} />);
-}
-
 */

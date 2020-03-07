@@ -3,7 +3,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 // import Box from '@material-ui/core/Box';
 import NaturePeopleIcon from "@material-ui/icons/NaturePeople";
@@ -37,7 +37,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function SignUp(props) {
-  
   const [localState, setState] = useState({
     firstName: "",
     lastName: "",
@@ -154,19 +153,17 @@ export default function SignUp(props) {
           </Grid>
           <Button
             type="submit"
-            href="/welcome"
             fullWidth
             variant="contained"
-            style={{ color: "#fff", background: teal[500]}}
+            style={{ color: "#fff", background: teal[500] }}
             className={classes.submit}
             onClick={handleSubmit}
           >
             Sign Up
           </Button>
-          {/* href not working ??????? */}
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="SignIn" variant="body2" className={classes.link}>
+              <Link to="SignIn" variant="body2" className={classes.link}>
                 Already have an account? Sign in
               </Link>
             </Grid>
