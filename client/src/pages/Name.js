@@ -49,12 +49,8 @@ export default function Name(props) {
         <TextField
           className={classes.input}
           id="filled-basic"
-<<<<<<< HEAD
-          placeholder="i.e. harry"
-=======
           placeholder="i.e. Harry the cactus"
           style={{backgroundColor: "#e0f2f1"}}
->>>>>>> d9174bc0b22d8c720e8fa94f93dff9ce1cb11f71
           label=""
           variant="filled"
           onChange={updateInput}
