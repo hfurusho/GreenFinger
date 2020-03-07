@@ -8,8 +8,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    marginTop: theme.spacing(8),
-    marginBottom: theme.spacing(8),
+
+    marginTop: theme.spacing(6),
+
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -79,18 +80,17 @@ export default function PlantDetail(props) {
       <CssBaseline />
 
       <div className={classes.paper}>
-        <h1>Plant's name: {plant.plantName}</h1>
-        <img
-          src={plant.plantImage}
-          alt={plant.plantName}
-          style={{ maxWidth: "100%" }}
-        />
-        <h3>Location: {plant.plantLocation}</h3>
-        <h3>Plant's type: {plant.plantType}</h3>
-        <h3>Start water on: {plant.plantStartDate}</h3>
-        <h3>Water Frequency: {plant.plantPeriod}</h3>
-        <h3>Water Time: {plant.plantTime}</h3>
-        <h3>Addition notes: {plant.plantNotes}</h3>
+
+        
+        <h2>Plant's name: {plant.plantName}</h2>
+        <img src={plant.plantImage} alt={plant.plantName} />
+        <h2>Location: {plant.plantLocation}</h2>
+        <h2>Plant's type: {plant.plantType}</h2>
+        <h2>Start water on: {plant.plantStartDate}</h2>
+        <h2>Water Frequency: {plant.plantPeriod}</h2>
+        <h2>Water Time: {plant.plantTime}</h2>
+        <h2>Addition notes: {plant.plantNotes}</h2>
+
         <Link color="primary" href="WaterSchedule" className={classes.link}>
           Change Water Schedule
         </Link>
