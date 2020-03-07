@@ -36,15 +36,6 @@ export default function FullTable() {
     });
   }, []);
 
-  function loadPlants() {
-    API.getPlants()
-      .then(function(res) {
-        setPlants(res.data);
-        console.log(res.data);
-      })
-      .catch(err => console.log(err));
-  }
-
   // Generate Order Data
   function createData(img, name, location) {
     const plantImage = img;

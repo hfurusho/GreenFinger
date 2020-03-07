@@ -87,6 +87,7 @@ export default function Notes(props) {
       <CssBaseline />
 
       <div className={classes.paper}>
+<<<<<<< HEAD
         <h1>Additional Notes?</h1>
         <form>
           <TextField
@@ -100,6 +101,27 @@ export default function Notes(props) {
         </form>
 
         <Button onClick={saveNotes} />
+=======
+        <h2>Additional Notes?</h2>
+
+        <TextField
+          className={classes.input}
+          id="name-field"
+          placeholder="i.e. Indirect sunlight"
+          label=""
+          variant="filled"
+          value={notes}
+          onChange={updateInput}
+        />
+
+        <Button className={classes.btn} onClick={saveNotes} />
+        <img
+          className={classes.img}
+          src={Monstera}
+          style={{ width: 120 }}
+          alt="monstera"
+        />
+>>>>>>> 9f1ad778e15f4d035d7999e44dc3a89b633c34c5
       </div>
     </Container>
   );
