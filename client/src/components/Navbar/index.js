@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React from "react";
-=======
 import React, { useEffect } from "react";
->>>>>>> 9f1ad778e15f4d035d7999e44dc3a89b633c34c5
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
@@ -12,10 +8,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import FaceIcon from "@material-ui/icons/Face";
 // import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-<<<<<<< HEAD
-=======
 import { withRouter } from "react-router-dom";
->>>>>>> 9f1ad778e15f4d035d7999e44dc3a89b633c34c5
 
 const useStyles = makeStyles({
   root: {
@@ -28,24 +21,6 @@ const useStyles = makeStyles({
   }
 });
 
-<<<<<<< HEAD
-/*
-function HomeButton() {
-  return (<BottomNavigationAction label="" value="" href="/" icon={<HomeIcon />} />);
-}
-function AddPlant() {
-  return (<BottomNavigationAction label="" value="Name" href="/name" icon={<AddCircleIcon />} />);
-}
-function User() {
-  return (<BottomNavigationAction label="" value="Profile" href="/table" icon={<FaceIcon />} />);
-}
-*/
-
-export default function LabelBottomNavigation() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState("");
-
-=======
 const Navbar = withRouter(({ history }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState("");
@@ -54,7 +29,6 @@ const Navbar = withRouter(({ history }) => {
     if (history.location.pathname === path) return { color: "#009688" }; //teal
   };
 
->>>>>>> 9f1ad778e15f4d035d7999e44dc3a89b633c34c5
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -93,11 +67,8 @@ const Navbar = withRouter(({ history }) => {
   );
 });
 
-<<<<<<< HEAD
-=======
 export default Navbar;
 
->>>>>>> 9f1ad778e15f4d035d7999e44dc3a89b633c34c5
 /*
     <Container>
       <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
@@ -108,8 +79,4 @@ export default Navbar;
     </Container>
   );
 }
-<<<<<<< HEAD
 */
-=======
-*/
->>>>>>> 9f1ad778e15f4d035d7999e44dc3a89b633c34c5

@@ -48,20 +48,12 @@ export default function Name(props) {
 
         <TextField
           id="filled-basic"
-          placeholder="i.e. Cactus"
+          placeholder="i.e. harry"
           label=""
           variant="filled"
           onChange={updateInput}
           required
         />
-<<<<<<< HEAD
-
-        <Button className={classes.btn} href="Location" onClick={saveName} />
-
-        <img className={classes.img} src={Cactus} style={{ width: 90 }} alt="cactus" />
-      
-
-=======
         <Button onClick={saveName} />
         <img
           className={classes.img}
@@ -69,7 +61,6 @@ export default function Name(props) {
           style={{ width: 90 }}
           alt="cactus"
         />
->>>>>>> 9f1ad778e15f4d035d7999e44dc3a89b633c34c5
       </div>
     </Container>
   );
