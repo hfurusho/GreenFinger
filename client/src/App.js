@@ -59,7 +59,7 @@ function App() {
           <Route exact path="/waterschedule" component={WaterSchedule} />
           <Route exact path="/notes" component={Notes} />
           <Route exact path="/table" component={Table} />
-          <Route exact path="/plants/:name" component={PlantDetail} />
+          <Route exact path="/plant/:id" component={PlantDetail} />
           <Route exact path="/table" component={Table} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />

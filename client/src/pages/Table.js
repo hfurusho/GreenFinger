@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import API from "../utils/API";
 import { NavLink } from "react-router-dom";
-import Link from "@material-ui/core/Link";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -15,13 +14,21 @@ import { makeStyles } from "@material-ui/core/styles";
 import Logo from "../assets/logo.png";
 import axios from "axios";
 import authContext from "../authContext";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center"
+  },
   seeMore: {
     marginTop: theme.spacing(3)
   },
-  table: {
-    minWidth: 650
+  img: {
+    marginTop: theme.spacing(6)
   }
 }));
 
@@ -36,69 +43,42 @@ export default function FullTable() {
     });
   }, []);
 
-  // Generate Order Data
-  function createData(img, name, location) {
-    const plantImage = img;
-    const plantName = name;
-    const plantLocation = location;
-    return { plantImage, plantName, plantLocation };
-  }
-  // placeholder data
-  const rows = [
-    createData("zz.jpg", "zz plant", "livingroom"),
-    createData("snakePlant.jpg", "snake plant", "bathroom"),
-    createData("monstera.jpg", "monstera", "livingroom"),
-    createData("pothos.jpg", "pothos", "bedroom")
-  ];
-
-  function preventDefault(event) {
-    event.preventDefault();
-  }
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" className={classes.paper}>
       <CssBaseline />
-
-      <h1>All Plants：</h1>
-
+      <h1>Overview</h1>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Image</TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Location</TableCell>
+              <TableCell></TableCell>
+              <TableCell align="left">Name</TableCell>
+              <TableCell align="left">Location</TableCell>
             </TableRow>
           </TableHead>
-
           <TableBody>
-            {rows.map(row => (
-              // <NavLink> to Specify Which Element in a Navigation Bar Is Active
-              <TableRow key={row.name}>
-                <NavLink
-                  to={"/plants/" + row.name}
-                  data-some-attribute="some-value"
-                >
-                  <TableCell>{row.plantImage}</TableCell>
-                  <TableCell>{row.name}</TableCell>
-                  <TableCell>{row.location}</TableCell>
-                  {/* <TableCell align="right">{row.amount}</TableCell> */}
-                </NavLink>
+            {plants.map(plant => (
+              <TableRow
+                key={plant._id}
+                hover
+                component={Link}
+                to={"plant/" + plant._id}
+              >
+                <TableCell component="th" scope="row" align="center">
+                  <img
+                    src={plant.plantImage}
+                    style={{ width: "75px", height: "75px" }}
+                  ></img>
+                </TableCell>
+                <TableCell align="left">{plant.plantName}</TableCell>
+                <TableCell align="left">{plant.plantLocation}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-
-        <div className={classes.seeMore}>
-          <Link color="primary" href="#" onClick={preventDefault}>
-            <br />
-            See more plants
-          </Link>
-        </div>
-
-        <br />
-        <img src={Logo} style={{ width: 100 }} alt="" />
+        <img src={Logo} style={{ width: 100 }} alt="" className={classes.img} />
       </TableContainer>
     </Container>
   );
