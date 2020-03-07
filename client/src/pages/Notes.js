@@ -11,7 +11,7 @@ import authContext from "../authContext";
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(6),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -103,6 +103,7 @@ export default function Notes(props) {
           className={classes.input}
           id="name-field"
           placeholder="i.e. Indirect sunlight"
+          style={{backgroundColor: "#e0f2f1"}}
           label=""
           variant="filled"
           value={notes}

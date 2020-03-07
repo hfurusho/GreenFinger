@@ -8,20 +8,20 @@ import Cactus2 from "../assets/cactus2.png";
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(6),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     textAlign: "center"
   },
   input: {
-    marginTop: theme.spacing(4)
+    marginTop: theme.spacing(8)
   },
   btn: {
     marginTop: theme.spacing(4)
   },
   img: {
-    marginTop: theme.spacing(6)
+    marginTop: theme.spacing(4)
   }
 }));
 
@@ -82,6 +82,7 @@ export default function Type(props) {
           className={classes.input}
           id="name-field"
           placeholder="i.e. monstera"
+          style={{backgroundColor: "#e0f2f1"}}
           label=""
           variant="filled"
           onChange={updateInput}

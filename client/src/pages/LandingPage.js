@@ -17,7 +17,8 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center"
   },
   title: {
-    fontFamily: "Montserrat",
+    fontFamily: "Lobster",
+    fontSize: 32,
     color: "teal"
   },
   intro: {

@@ -11,14 +11,14 @@ import { format } from "date-fns";
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(6),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     textAlign: "center"
   },
   btn: {
-    marginTop: theme.spacing(6)
+    marginTop: theme.spacing(4)
   }
 }));
 
@@ -61,7 +61,13 @@ export default function WaterSchedule(props) {
           <h3>Start Date: </h3>
           <DatePicker onDateChange={handleDateChange} date={selectedDate} />
           <h3>Remind me every:</h3>
-          <TextField id="period-field" onChange={updateInput} />
+          <TextField
+            id="period-field"
+            placeholder="  i.e. 14"
+            style={{ backgroundColor: "#e0f2f1" }}
+            onChange={updateInput}
+            required
+          />
           Days
           <h3>Notify me at</h3>
           <TimePicker
