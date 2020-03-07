@@ -9,7 +9,6 @@ import Monstera from "../assets/monstera.png";
 
 import authContext from "../authContext";
 
-
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -99,10 +98,10 @@ export default function Notes(props) {
       <CssBaseline />
 
       <div className={classes.paper}>
-
         <h2>Additional Notes?</h2>
 
-        <TextField className={classes.input}
+        <TextField
+          className={classes.input}
           id="name-field"
           placeholder="i.e. Indirect sunlight"
           label=""
@@ -111,9 +110,13 @@ export default function Notes(props) {
           onChange={updateInput}
         />
 
-        <Button className={classes.btn} href="Table" onClick={saveNotes} />
-        <img className={classes.img} src={Monstera} style={{ width: 120 }} alt="monstera" />
-
+        <Button className={classes.btn} onClick={saveNotes} />
+        <img
+          className={classes.img}
+          src={Monstera}
+          style={{ width: 120 }}
+          alt="monstera"
+        />
       </div>
     </Container>
   );

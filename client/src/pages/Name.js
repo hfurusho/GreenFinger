@@ -14,28 +14,18 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     textAlign: "center"
   },
-  input:{
+  input: {
     marginTop: theme.spacing(4)
   },
-  btn:{
+  btn: {
     marginTop: theme.spacing(4)
   },
-  img:{
+  img: {
     marginTop: theme.spacing(4)
   }
 }));
 
 export default function Name(props) {
-  // constructor(props) {
-  //   super(props);
-  //   // this.classes = this.useStyles();
-  //   // This binding is necessary to make `this` work in the callback
-  //   this.saveName = this.saveName.bind(this);
-  //   this.state = {
-  //     name: ""
-  //   };
-  //   this.updateInput = this.updateInput.bind(this);
-  // }
   const [name, setName] = useState("");
 
   const classes = useStyles();
@@ -45,10 +35,6 @@ export default function Name(props) {
   }
 
   function saveName() {
-    // alert("saveName executed"); for testing
-    //grab text from text field and store in local story
-    // let name = this.state.name;
-    // alert(name);
     localStorage.setItem("plantName", name);
     props.history.push("Location");
   }
@@ -60,32 +46,21 @@ export default function Name(props) {
       <div className={classes.paper}>
         <h2>What's the name of your plant?</h2>
 
-
-        <TextField className={classes.input}
+        <TextField
           id="filled-basic"
-          placeholder="i.e. cactus"
+          placeholder="i.e. Cactus"
           label=""
           variant="filled"
           onChange={updateInput}
+          required
         />
-
-        <Button className={classes.btn} href="Location" onClick={saveName} />
-
-        <img className={classes.img} src={Cactus} style={{ width: 90 }} alt="cactus" />
-      <form>
-          <TextField
-            id="filled-basic"
-            placeholder="i.e. Harry"
-            label=""
-            variant="filled"
-            onChange={updateInput}
-            required
-          />
-        </form>
-
         <Button onClick={saveName} />
-        <img src={Cactus} style={{ width: 100 }} alt="" />
-
+        <img
+          className={classes.img}
+          src={Cactus}
+          style={{ width: 90 }}
+          alt="cactus"
+        />
       </div>
     </Container>
   );

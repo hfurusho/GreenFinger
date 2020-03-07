@@ -48,32 +48,28 @@ function App() {
   }, []);
 
   return (
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/welcome" component={Welcome} />
+          <Route exact path="/name" component={Name} />
+          <Route exact path="/location" component={Location} />
+          <Route exact path="/type" component={Type} />
+          <Route exact path="/waterschedule" component={WaterSchedule} />
+          <Route exact path="/notes" component={Notes} />
+          <Route exact path="/table" component={Table} />
+          <Route exact path="/plants/:name" component={PlantDetail} />
+          <Route exact path="/table" component={Table} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/signin" component={SignIn} />
 
-    <GlobalState>
-      <Router>
-        <div className="App">
-          <Switch>
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path="/welcome" component={Welcome} />
-            <Route exact path="/name" component={Name} />
-            <Route exact path="/location" component={Location} />
-            <Route exact path="/type" component={Type} />
-            <Route exact path="/waterschedule" component={WaterSchedule} />
-            <Route exact path="/notes" component={Notes} />
-            <Route exact path="/table" component={Table} />
-            <Route exact path="/plants/:name" component={PlantDetail} />
-            <Route exact path="/table" component={Table} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/signin" component={SignIn} />
+          <Route component={NoMatch} />
+        </Switch>
 
-            <Route component={NoMatch} />
-          </Switch>
-
-          <Grid container justify="center">
-            <Grid item>
-              <Navbar />
-            </Grid>
-
+        <Grid container justify="center">
+          <Grid item>
+            <Navbar />
           </Grid>
         </Grid>
       </div>

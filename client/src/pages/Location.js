@@ -14,13 +14,13 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     textAlign: "center"
   },
-  input:{
+  input: {
     marginTop: theme.spacing(4)
   },
-  btn:{
+  btn: {
     marginTop: theme.spacing(4)
   },
-  img:{
+  img: {
     marginTop: theme.spacing(6)
   }
 }));
@@ -46,8 +46,8 @@ export default function Location(props) {
       <div className={classes.paper}>
         <h2>Where's the location of this plant?</h2>
 
-
-        <TextField className={classes.input}
+        <TextField
+          className={classes.input}
           id="filled-basic"
           placeholder="i.e. livingroom"
           label=""
@@ -55,10 +55,14 @@ export default function Location(props) {
           onChange={updateInput}
         />
 
-        <Button className={classes.btn} href="Type" onClick={saveLocation} />
+        <Button className={classes.btn} onClick={saveLocation} />
 
-        <img className={classes.img} src={Aloe} style={{ width: 100 }} alt="aloe" />
-
+        <img
+          className={classes.img}
+          src={Aloe}
+          style={{ width: 100 }}
+          alt="aloe"
+        />
       </div>
     </Container>
   );
