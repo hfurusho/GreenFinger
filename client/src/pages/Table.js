@@ -36,15 +36,6 @@ export default function FullTable() {
     });
   }, []);
 
-  function loadPlants() {
-    API.getPlants()
-      .then(function(res) {
-        setPlants(res.data);
-        console.log(res.data);
-      })
-      .catch(err => console.log(err));
-  }
-
   // Generate Order Data
   function createData(img, name, location) {
     const plantImage = img;
@@ -99,18 +90,16 @@ export default function FullTable() {
           </TableBody>
         </Table>
 
-      <div className={classes.seeMore}>
-        <Link color="primary" href="#" onClick={preventDefault}>
-          <br />
-          See more plants
-        </Link>
-      </div>
+        <div className={classes.seeMore}>
+          <Link color="primary" href="#" onClick={preventDefault}>
+            <br />
+            See more plants
+          </Link>
+        </div>
 
-      <br />
-      <img src={Logo} style={{ width: 100 }} alt="" />
-
-    </TableContainer>
-
+        <br />
+        <img src={Logo} style={{ width: 100 }} alt="" />
+      </TableContainer>
     </Container>
   );
 }
