@@ -13,6 +13,15 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     textAlign: "center"
+  },
+  input:{
+    marginTop: theme.spacing(4)
+  },
+  btn:{
+    marginTop: theme.spacing(4)
+  },
+  img:{
+    marginTop: theme.spacing(6)
   }
 }));
 
@@ -79,23 +88,30 @@ export default function Type(props) {
       <CssBaseline />
 
       <div className={classes.paper}>
-        <h1>What's the type of this plant?</h1>
-        <form>
-          <TextField
+
+        <h2>What's the type of this plant?</h2>
+
+          <TextField className={classes.input}
             id="name-field"
-            placeholder="i.e. cactus"
+            placeholder="i.e. monstera"
+
             label=""
             variant="filled"
             onChange={updateInput}
           />
-        </form>
 
-        <Button
+
+        <Button className={classes.btn}
+          href="WaterSchedule"
+
           onClick={async () => {
             await saveType();
           }}
         />
-        <img src={Cactus2} style={{ width: 100 }} alt="" />
+
+        
+        <img className={classes.img} src={Cactus2} style={{ width: 100 }} alt="cactus2" />
+
       </div>
     </Container>
   );

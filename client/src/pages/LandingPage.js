@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
+// import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
@@ -12,13 +12,21 @@ import teal from "@material-ui/core/colors/teal";
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(10),
     display: "flex",
     flexDirection: "column",
     alignItems: "center"
   },
+  title: {
+    fontFamily: "Montserrat",
+    color: "teal"
+  },
+  intro: {
+    fontSize: 14,
+    color: "teal"
+  },
   submit: {
-    margin: theme.spacing(2, 0, 2)
+    margin: theme.spacing(12, 0, 2)
   },
   link: {
     color: "teal"
@@ -33,10 +41,12 @@ export default function LandingPage() {
       <CssBaseline />
 
       <div className={classes.paper}>
-        <img src={Logo} style={{ width: 50 }} alt="" />
-        <Typography component="h1" variant="h5">
-          Thrive
-        </Typography>
+        <img src={Logo} style={{ width: 80 }} alt="logo" />
+        <h1 className={classes.title}> <strong>Thrive</strong></h1>
+        {/* variant="h5" style={{ fontFamily: 'Montserrat, sans-serif;' }} */}
+        
+        <p className={classes.intro}>Track water schedules for your houseplants</p>
+        
         <Button
           href="SignUp"
           type="submit"
@@ -47,7 +57,7 @@ export default function LandingPage() {
           Get Started with Thrive
         </Button>
 
-        <Grid container justify="flex-end">
+        <Grid container justify="center">
           <Grid item>
             <Link href="SignIn" variant="body2" className={classes.link}>
               Already have an account? Sign in

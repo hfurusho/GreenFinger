@@ -13,6 +13,15 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     textAlign: "center"
+  },
+  input:{
+    marginTop: theme.spacing(4)
+  },
+  btn:{
+    marginTop: theme.spacing(4)
+  },
+  img:{
+    marginTop: theme.spacing(4)
   }
 }));
 
@@ -49,9 +58,21 @@ export default function Name(props) {
       <CssBaseline />
 
       <div className={classes.paper}>
-        <h1>What's the name of your plant?</h1>
+        <h2>What's the name of your plant?</h2>
 
-        <form>
+
+        <TextField className={classes.input}
+          id="filled-basic"
+          placeholder="i.e. cactus"
+          label=""
+          variant="filled"
+          onChange={updateInput}
+        />
+
+        <Button className={classes.btn} href="Location" onClick={saveName} />
+
+        <img className={classes.img} src={Cactus} style={{ width: 90 }} alt="cactus" />
+      <form>
           <TextField
             id="filled-basic"
             placeholder="i.e. Harry"
@@ -64,6 +85,7 @@ export default function Name(props) {
 
         <Button onClick={saveName} />
         <img src={Cactus} style={{ width: 100 }} alt="" />
+
       </div>
     </Container>
   );
