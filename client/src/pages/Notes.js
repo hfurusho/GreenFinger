@@ -50,6 +50,15 @@ export default function Notes(props) {
       },
       userId
     );
+    //clear local storage to blank
+    localStorage.removeItem("plantName");
+    localStorage.removeItem("plantLocation");
+    localStorage.removeItem("plantType");
+    localStorage.removeItem("plantStartDate");
+    localStorage.removeItem("plantTime");
+    localStorage.removeItem("plantPeriod");
+    localStorage.removeItem("plantNotes");
+    localStorage.removeItem("plantImage");
 
     props.history.push("Table");
   }
@@ -79,16 +88,6 @@ export default function Notes(props) {
 
     //send to MongoDB as object;
     handleDataSubmit(plantObject);
-
-    //clear local storage to blank
-    localStorage.removeItem("plantName");
-    localStorage.removeItem("plantLocation");
-    localStorage.removeItem("plantType");
-    localStorage.removeItem("plantStartDate");
-    localStorage.removeItem("plantTime");
-    localStorage.removeItem("plantPeriod");
-    localStorage.removeItem("plantNotes");
-    localStorage.removeItem("plantImage");
   }
 
   const classes = useStyles();

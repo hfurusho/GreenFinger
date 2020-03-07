@@ -17,11 +17,10 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     textAlign: "center"
   },
-  btn:{
+  btn: {
     marginTop: theme.spacing(6)
   }
 }));
-
 
 export default function WaterSchedule(props) {
   const [selectedDate, setSelectedDate] = React.useState(
@@ -45,7 +44,6 @@ export default function WaterSchedule(props) {
 
   const classes = useStyles();
 
-
   function saveSelectedDate() {
     localStorage.setItem("plantStartDate", format(selectedDate, "yyyy-MM-dd"));
     localStorage.setItem("plantTime", format(selectedTime, "p"));
@@ -56,7 +54,6 @@ export default function WaterSchedule(props) {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-
 
       <div className={classes.paper}>
         <div style={{ textAlign: "center" }}>
@@ -71,10 +68,8 @@ export default function WaterSchedule(props) {
             onTimeChange={handleTimeChange}
             selectedTime={selectedTime}
           />
-
-          <Button className={classes.btn} href="Notes" onClick={saveSelectedDate} />
+          <Button className={classes.btn} onClick={saveSelectedDate} />
         </div>
-
       </div>
     </Container>
   );

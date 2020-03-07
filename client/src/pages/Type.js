@@ -50,14 +50,12 @@ export default function Type(props) {
         console.log("api call result", data);
         console.log("imageUrl", imageUrl);
 
-        saveImage(imageUrl);
+        localStorage.setItem("plantImage", imageUrl);
+      })
+      .then(() => props.history.push("WaterSchedule"))
+      .catch(err => {
+        if (err) throw err;
       });
-  }
-
-  function saveImage(imgUrl) {
-    console.log("saveImg fired");
-    localStorage.setItem("plantImage", imgUrl);
-    props.history.push("WaterSchedule");
   }
 
   async function saveType() {
@@ -91,7 +89,6 @@ export default function Type(props) {
 
         <Button
           className={classes.btn}
-          href="WaterSchedule"
           onClick={async () => {
             await saveType();
           }}
