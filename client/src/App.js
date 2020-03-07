@@ -11,7 +11,6 @@ import WaterSchedule from "./pages/WaterSchedule";
 import Notes from "./pages/Notes";
 import Table from "./pages/Table";
 import PlantDetail from "./pages/PlantDetail";
-import User from "./pages/User";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import NoMatch from "./pages/NoMatch";
@@ -37,7 +36,6 @@ function App() {
             <Route exact path="/table" component={Table} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/signin" component={SignIn} />
-            <Route exact path="/user" component={User} />
 
             <Route component={NoMatch} />
           </Switch>

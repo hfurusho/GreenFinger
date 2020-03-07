@@ -2,11 +2,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-//import Container from '@material-ui/core/Container';
 import HomeIcon from '@material-ui/icons/Home';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import FaceIcon from '@material-ui/icons/Face';
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+// import teal from '@material-ui/core/colors/teal';
 
 const useStyles = makeStyles(theme =>({
   root: {
@@ -14,11 +13,15 @@ const useStyles = makeStyles(theme =>({
     position: 'fixed',
     alignContent: 'center',
     bottom: 0
+  },
+  addBtn: {
+    marginBottom: theme.spacing(2)
   }
 }));
 
-export default function LabelBottomNavigation() {
+export default function LabelBottomNavigation(history) {
   const classes = useStyles();
+
   const [value, setValue] = React.useState('');
 
   const handleChange = (event, newValue) => {
@@ -28,7 +31,7 @@ export default function LabelBottomNavigation() {
   return (
     <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
       <BottomNavigationAction label="" value="Index" href="/" icon={<HomeIcon />} />
-      <BottomNavigationAction label="" value="Name" href="name" icon={<AddCircleIcon />} />
+      <BottomNavigationAction label="" value="Name" href="name" icon={<AddCircleIcon style={{ fontSize: 35 }} className={classes.addBtn}/> }/>
       <BottomNavigationAction label="" value="table" href="table" icon={<FaceIcon />} />
     </BottomNavigation>
       );
