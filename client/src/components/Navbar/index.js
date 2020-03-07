@@ -50,7 +50,7 @@ const Navbar = withRouter(({ history }) => {
       <BottomNavigationAction
         label=""
         value="Name"
-        to="name"
+        to="/name"
         icon={<AddCircleIcon />}
         component={Link}
         style={isActive(history, "/name")}
@@ -58,7 +58,7 @@ const Navbar = withRouter(({ history }) => {
       <BottomNavigationAction
         label=""
         value="Profile"
-        to="table"
+        to="/table"
         icon={<FaceIcon />}
         component={Link}
         style={isActive(history, "/table")}
