@@ -1,17 +1,17 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import HomeIcon from '@material-ui/icons/Home';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
-import FaceIcon from '@material-ui/icons/Face';
-// import teal from '@material-ui/core/colors/teal';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import BottomNavigation from "@material-ui/core/BottomNavigation";
+import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
+import HomeIcon from "@material-ui/icons/Home";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+import FaceIcon from "@material-ui/icons/Face";
+import { Link, withRouter } from "react-router-dom";
 
-const useStyles = makeStyles(theme =>({
+const useStyles = makeStyles(theme => ({
   root: {
-    width: '0',
-    position: 'fixed',
-    alignContent: 'center',
+    width: "0",
+    position: "fixed",
+    alignContent: "center",
     bottom: 0
   },
   addBtn: {
@@ -19,25 +19,59 @@ const useStyles = makeStyles(theme =>({
   }
 }));
 
-export default function LabelBottomNavigation(history) {
+const isActive = (history, path) => {
+  if (history.location.pathname.includes(path)) 
+    return { color: "#009688"}; //teal
+};
+
+// export default function LabelBottomNavigation(history) {
+const Footer = withRouter(({ history }) => {
   const classes = useStyles();
 
-  const [value, setValue] = React.useState('');
+  const [value, setValue] = React.useState("");
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  // const handleChange = (event, newValue) => {
+  //   setValue(newValue);
+  // };
 
   return (
-    <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
-      <BottomNavigationAction label="" value="Index" href="/" icon={<HomeIcon />} />
-      <BottomNavigationAction label="" value="Name" href="name" icon={<AddCircleIcon style={{ fontSize: 35 }} className={classes.addBtn}/> }/>
-      <BottomNavigationAction label="" value="table" href="table" icon={<FaceIcon />} />
+    <BottomNavigation
+      value={value}
+      onChange={(newValue) => {
+        setValue(newValue);
+      }}
+      className={classes.root}
+    >
+      <BottomNavigationAction
+        href=""
+        icon={<HomeIcon />}
+        style={isActive(history, "")}
+        label=""
+        value="Index"
+      />
+      <BottomNavigationAction
+        href="name"
+        icon={<AddCircleIcon />}
+        style={isActive(history, "/name")}
+        label=""
+        value="Name"
+        className={classes.addBtn}
+      />
+      <BottomNavigationAction
+        href="table"
+        icon={<FaceIcon />}
+        style={
+          (isActive(history, "/table"))
+        }
+        label=""
+        value="table"
+      />
     </BottomNavigation>
-      );
-    }
-  
-    /*
+  );
+});
+
+export default Footer;
+/*
     <Container>
       <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
         <Route path={["/name", "/location", "/WaterSchedule", "/notes"]} component={HomeIcon} />
