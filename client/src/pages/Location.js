@@ -8,7 +8,7 @@ import Aloe from "../assets/aloe.png";
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(6),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(4)
   },
   img: {
-    marginTop: theme.spacing(6)
+    marginTop: theme.spacing(4)
   }
 }));
 
@@ -50,6 +50,7 @@ export default function Location(props) {
           className={classes.input}
           id="filled-basic"
           placeholder="i.e. livingroom"
+          style={{backgroundColor: "#e0f2f1"}}
           label=""
           variant="filled"
           onChange={updateInput}
