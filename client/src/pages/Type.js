@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(4)
   },
   img: {
-    marginTop: theme.spacing(6)
+    marginTop: theme.spacing(4)
   }
 }));
 
