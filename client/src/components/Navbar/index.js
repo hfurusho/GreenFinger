@@ -5,7 +5,7 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import HomeIcon from "@material-ui/icons/Home";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import FaceIcon from "@material-ui/icons/Face";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,7 +25,7 @@ const isActive = (history, path) => {
 };
 
 // export default function LabelBottomNavigation(history) {
-const Footer = withRouter(({ history }) => {
+const Navbar = withRouter(({ history }) => {
   const classes = useStyles();
 
   const [value, setValue] = React.useState("");
@@ -70,7 +70,8 @@ const Footer = withRouter(({ history }) => {
   );
 });
 
-export default Footer;
+export default Navbar;
+
 /*
     <Container>
       <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
