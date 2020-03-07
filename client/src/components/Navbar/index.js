@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const isActive = (history, path) => {
-  if (history.location.pathname.includes(path)) 
+  if (history.location.pathname === path) 
     return { color: "#009688"}; //teal
 };
 
@@ -43,9 +43,9 @@ const Footer = withRouter(({ history }) => {
       className={classes.root}
     >
       <BottomNavigationAction
-        href=""
+        href="/"
         icon={<HomeIcon />}
-        style={isActive(history, "")}
+        style={isActive(history, "/")}
         label=""
         value="Index"
       />
