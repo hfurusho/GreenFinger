@@ -5,10 +5,7 @@ import Button from "../components/SubmitBtn";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
-import Monstera from "../assets/monstera.png";
-
 import authContext from "../authContext";
-
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -17,15 +14,6 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     textAlign: "center"
-  },
-  input: {
-    marginTop: theme.spacing(4)
-  },
-  btn: {
-    marginTop: theme.spacing(4)
-  },
-  img: {
-    marginTop: theme.spacing(6)
   }
 }));
 
@@ -99,21 +87,19 @@ export default function Notes(props) {
       <CssBaseline />
 
       <div className={classes.paper}>
+        <h1>Additional Notes?</h1>
+        <form>
+          <TextField
+            id="name-field"
+            placeholder="i.e. Indirect sunlight"
+            label=""
+            variant="filled"
+            value={notes}
+            onChange={updateInput}
+          />
+        </form>
 
-        <h2>Additional Notes?</h2>
-
-        <TextField className={classes.input}
-          id="name-field"
-          placeholder="i.e. Indirect sunlight"
-          label=""
-          variant="filled"
-          value={notes}
-          onChange={updateInput}
-        />
-
-        <Button className={classes.btn} href="Table" onClick={saveNotes} />
-        <img className={classes.img} src={Monstera} style={{ width: 120 }} alt="monstera" />
-
+        <Button onClick={saveNotes} />
       </div>
     </Container>
   );

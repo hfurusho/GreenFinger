@@ -72,19 +72,7 @@ export default function Name(props) {
         <Button className={classes.btn} href="Location" onClick={saveName} />
 
         <img className={classes.img} src={Cactus} style={{ width: 90 }} alt="cactus" />
-      <form>
-          <TextField
-            id="filled-basic"
-            placeholder="i.e. Harry"
-            label=""
-            variant="filled"
-            onChange={updateInput}
-            required
-          />
-        </form>
-
-        <Button onClick={saveName} />
-        <img src={Cactus} style={{ width: 100 }} alt="" />
+      
 
       </div>
     </Container>
