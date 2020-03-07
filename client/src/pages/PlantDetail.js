@@ -8,9 +8,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   paper: {
-
     marginTop: theme.spacing(6),
-
+    marginBottom: theme.spacing(6),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -69,9 +68,15 @@ export default function PlantDetail(props) {
   }
 
   // Deletes a plant from the database with a given name
-  function deletePlant(plantId) {
-    API.deletePlant(plantId).catch(err => console.log(err));
-  }
+  const deletePlant = event => {
+    event.preventDefault();
+    console.log("deleting plant with id: " + plant._id);
+    API.deletePlant(plant._id)
+      .then(plant => {
+        props.history.push("/table");
+      })
+      .catch(err => console.log(err));
+  };
 
   const classes = useStyles();
 
@@ -80,10 +85,12 @@ export default function PlantDetail(props) {
       <CssBaseline />
 
       <div className={classes.paper}>
-
-        
         <h2>Plant's name: {plant.plantName}</h2>
-        <img src={plant.plantImage} alt={plant.plantName} />
+        <img
+          src={plant.plantImage}
+          alt={plant.plantName}
+          style={{ maxWidth: "100%" }}
+        />
         <h2>Location: {plant.plantLocation}</h2>
         <h2>Plant's type: {plant.plantType}</h2>
         <h2>Start water on: {plant.plantStartDate}</h2>
@@ -94,7 +101,7 @@ export default function PlantDetail(props) {
         <Link color="primary" href="WaterSchedule" className={classes.link}>
           Change Water Schedule
         </Link>
-        <Button onClick={() => deletePlant(plant.plantName)} />
+        <Button onClick={deletePlant} />
         {/* is this right? */}
       </div>
     </Container>
