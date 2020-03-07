@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
@@ -8,7 +8,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   paper: {
+
     marginTop: theme.spacing(6),
+
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -25,7 +27,8 @@ export default function PlantDetail(props) {
 
   // When this component mounts, grab the book with the _id of props.match.params.id
   useEffect(() => {
-    API.getPlant(props.match.params.name)
+    const plantId = props.match.params.id;
+    API.getPlant(plantId)
       .then(res => setPlant(res.data))
       .catch(err => console.log(err));
   }, []);
@@ -66,8 +69,8 @@ export default function PlantDetail(props) {
   }
 
   // Deletes a plant from the database with a given name
-  function deletePlant(name) {
-    API.deletePlant(name).catch(err => console.log(err));
+  function deletePlant(plantId) {
+    API.deletePlant(plantId).catch(err => console.log(err));
   }
 
   const classes = useStyles();
@@ -77,6 +80,7 @@ export default function PlantDetail(props) {
       <CssBaseline />
 
       <div className={classes.paper}>
+
         
         <h2>Plant's name: {plant.plantName}</h2>
         <img src={plant.plantImage} alt={plant.plantName} />
@@ -86,6 +90,7 @@ export default function PlantDetail(props) {
         <h2>Water Frequency: {plant.plantPeriod}</h2>
         <h2>Water Time: {plant.plantTime}</h2>
         <h2>Addition notes: {plant.plantNotes}</h2>
+
         <Link color="primary" href="WaterSchedule" className={classes.link}>
           Change Water Schedule
         </Link>
