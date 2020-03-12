@@ -22,19 +22,26 @@ const useStyles = makeStyles(theme => ({
   },
   img: {
     marginTop: theme.spacing(4)
+  },
+  error: {
+    color: "red"
   }
 }));
 
 export default function Location(props) {
   const [location, setLocation] = useState("");
-
+  const [error, setError] = useState("");
   function updateInput(event) {
     setLocation(event.target.value);
   }
 
   function saveLocation() {
-    localStorage.setItem("plantLocation", location);
-    props.history.push("Type");
+    if (location.length !== 0) {
+      localStorage.setItem("plantLocation", location);
+      props.history.push("Type");
+    } else {
+      setError("Please enter a location");
+    }
   }
 
   const classes = useStyles();
@@ -50,12 +57,12 @@ export default function Location(props) {
           className={classes.input}
           id="filled-basic"
           placeholder="i.e. livingroom"
-          style={{backgroundColor: "#e0f2f1"}}
+          style={{ backgroundColor: "#e0f2f1" }}
           label=""
           variant="filled"
           onChange={updateInput}
         />
-
+        <span className={classes.error}>{error}</span>
         <Button className={classes.btn} onClick={saveLocation} />
 
         <img

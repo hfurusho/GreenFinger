@@ -19,25 +19,38 @@ const useStyles = makeStyles(theme => ({
   },
   btn: {
     marginTop: theme.spacing(4)
+  },
+  error: {
+    color: "red"
   }
 }));
 
 export default function WaterSchedule(props) {
-  const [selectedDate, setSelectedDate] = React.useState(
-    new Date("2020-03-07T21:11:54")
-  );
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const [selectedTime, setSelectedTime] = React.useState(new Date());
+  const [period, setPeriod] = useState("");
+  const [errors, setErrors] = useState({ startDate: "", period: "", time: "" });
+
   const handleDateChange = date => {
     setSelectedDate(date);
+
+    if (date.toString() === "Invalid Date") {
+      setErrors({ ...errors, startDate: "Invalid Date" });
+    } else {
+      setErrors({ ...errors, startDate: "" });
+    }
   };
 
-  const [selectedTime, setSelectedTime] = React.useState(
-    new Date("2020-03-07T09:11:54")
-  );
   const handleTimeChange = time => {
     setSelectedTime(time);
+
+    if (time.toString() === "Invalid Date") {
+      setErrors({ ...errors, time: "Invalid Time" });
+    } else {
+      setErrors({ ...errors, time: "" });
+    }
   };
 
-  const [period, setPeriod] = useState("7");
   function updateInput(event) {
     setPeriod(event.target.value);
   }
@@ -45,10 +58,17 @@ export default function WaterSchedule(props) {
   const classes = useStyles();
 
   function saveSelectedDate() {
-    localStorage.setItem("plantStartDate", format(selectedDate, "yyyy-MM-dd"));
-    localStorage.setItem("plantTime", format(selectedTime, "p"));
-    localStorage.setItem("plantPeriod", period);
-    props.history.push("Notes");
+    if (!Number.isNaN(parseInt(period)) && !errors.time && !errors.startDate) {
+      localStorage.setItem(
+        "plantStartDate",
+        format(selectedDate, "yyyy-MM-dd")
+      );
+      localStorage.setItem("plantTime", format(selectedTime, "p"));
+      localStorage.setItem("plantPeriod", period);
+      props.history.push("Notes");
+    } else {
+      setErrors({ ...errors, period: "Please input a valid watering period." });
+    }
   }
 
   return (
@@ -66,9 +86,11 @@ export default function WaterSchedule(props) {
             placeholder="  i.e. 14"
             style={{ backgroundColor: "#e0f2f1" }}
             onChange={updateInput}
+            type="number"
             required
           />
           Days
+          <div className={classes.error}>{errors.period}</div>
           <h3>Notify me at</h3>
           <TimePicker
             onTimeChange={handleTimeChange}
