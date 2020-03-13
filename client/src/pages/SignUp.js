@@ -12,6 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import authContext from "../authContext";
 import teal from "@material-ui/core/colors/teal";
+import { red } from "@material-ui/core/colors";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -33,6 +34,9 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     color: "teal"
+  },
+  error: {
+    color: "red"
   }
 }));
 
@@ -52,7 +56,7 @@ export default function SignUp(props) {
     setState({ ...localState, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     const newUser = {
@@ -65,9 +69,9 @@ export default function SignUp(props) {
     registerUser(newUser, props.history);
   };
 
-  useEffect(() => {
-    setState({ ...localState, errors: errors });
-  }, [errors]);
+  // useEffect(() => {
+  //   setState({ ...localState, errors: errors });
+  // }, []);
 
   const classes = useStyles();
 
@@ -99,6 +103,7 @@ export default function SignUp(props) {
                 onChange={handleChange}
                 autoFocus
               />
+              <span className={classes.error}>{errors.name}</span>
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -123,6 +128,7 @@ export default function SignUp(props) {
                 onChange={handleChange}
                 autoComplete="email"
               />
+              <span className={classes.error}>{errors.email}</span>
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -136,6 +142,7 @@ export default function SignUp(props) {
                 type="password"
                 autoComplete="current-password"
               />
+              <span className={classes.error}>{errors.password}</span>
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -149,6 +156,7 @@ export default function SignUp(props) {
                 type="password"
                 autoComplete="current-password"
               />
+              <span className={classes.error}>{errors.password2}</span>
             </Grid>
           </Grid>
           <Button

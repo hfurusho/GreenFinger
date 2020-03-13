@@ -22,23 +22,34 @@ const useStyles = makeStyles(theme => ({
   },
   img: {
     marginTop: theme.spacing(4)
+  },
+  error: {
+    color: "red"
   }
 }));
 
 export default function Type(props) {
   const [type, setType] = useState("");
+  const [errors, setErrors] = useState("");
 
-  //should I use useEffect here or no?
-  // useEffect(() => {
-  //   if (type) searchImage();
-  // }, [type]);
-  //useEffect will trigger whenever type is different
+  function updateInput(event) {
+    setType(event.target.value);
+  }
+
+  function saveType() {
+    if (type.length !== 0) {
+      console.log("saveType fired");
+      localStorage.setItem("plantType", type); //where is type defined?
+
+      searchImage(type);
+    } else {
+      setErrors("Please enter a plant type");
+    }
+  }
 
   function searchImage(type) {
-    console.log("searchImage fired");
-    console.log(type);
-
     const queryUrl = `https://pixabay.com/api/?key=15485203-cba91f318bb796f35c4848942&q=${type}&image_type=photo&pretty=true`;
+
     fetch(queryUrl)
       .then(function(response) {
         return response.json();
@@ -47,8 +58,6 @@ export default function Type(props) {
         const imageUrl =
           data.hits[0].webformatURL ||
           "https://pixabay.com/get/52e6d14b4c53ad14f6da8c7dda79367b1137dbe753526c48702778d09044c150bd_640.jpg";
-        console.log("api call result", data);
-        console.log("imageUrl", imageUrl);
 
         localStorage.setItem("plantImage", imageUrl);
       })
@@ -56,17 +65,6 @@ export default function Type(props) {
       .catch(err => {
         if (err) throw err;
       });
-  }
-
-  async function saveType() {
-    console.log("saveType fired");
-    localStorage.setItem("plantType", type); //where is type defined?
-
-    await searchImage(type);
-  }
-
-  function updateInput(event) {
-    setType(event.target.value);
   }
 
   const classes = useStyles();
@@ -82,18 +80,13 @@ export default function Type(props) {
           className={classes.input}
           id="name-field"
           placeholder="i.e. monstera"
-          style={{backgroundColor: "#e0f2f1"}}
+          style={{ backgroundColor: "#e0f2f1" }}
           label=""
           variant="filled"
           onChange={updateInput}
         />
-
-        <Button
-          className={classes.btn}
-          onClick={async () => {
-            await saveType();
-          }}
-        />
+        <span className={classes.error}>{errors}</span>
+        <Button className={classes.btn} onClick={saveType} />
 
         <img
           className={classes.img}

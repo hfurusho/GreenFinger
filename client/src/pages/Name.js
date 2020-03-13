@@ -22,11 +22,15 @@ const useStyles = makeStyles(theme => ({
   },
   img: {
     marginTop: theme.spacing(2)
+  },
+  error: {
+    color: "red"
   }
 }));
 
 export default function Name(props) {
   const [name, setName] = useState("");
+  const [error, setError] = useState("");
 
   const classes = useStyles();
 
@@ -35,8 +39,12 @@ export default function Name(props) {
   }
 
   function saveName() {
-    localStorage.setItem("plantName", name);
-    props.history.push("Location");
+    if (name.trim().length !== 0) {
+      localStorage.setItem("plantName", name);
+      props.history.push("Location");
+    } else {
+      setError("Please enter a plant pet name");
+    }
   }
 
   return (
@@ -45,17 +53,18 @@ export default function Name(props) {
 
       <div className={classes.paper}>
         <h2>What's the pet name of your plant?</h2>
-
         <TextField
           className={classes.input}
           id="filled-basic"
           placeholder="i.e. Harry the cactus"
-          style={{backgroundColor: "#e0f2f1"}}
+          style={{ backgroundColor: "#e0f2f1" }}
           label=""
           variant="filled"
           onChange={updateInput}
           required
         />
+        <span className={classes.error}>{error}</span>
+
         <Button onClick={saveName} />
         <img
           className={classes.img}

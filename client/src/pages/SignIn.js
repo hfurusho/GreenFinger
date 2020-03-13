@@ -13,7 +13,6 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import authContext from "../authContext";
 import teal from "@material-ui/core/colors/teal";
-import { datePickerDefaultProps } from "@material-ui/pickers/constants/prop-types";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -35,6 +34,9 @@ const useStyles = makeStyles(theme => ({
   },
   link: {
     color: "teal"
+  },
+  error: {
+    color: "red"
   }
 }));
 
@@ -83,6 +85,7 @@ export default function SignIn(props) {
         </Typography>
 
         <form className={classes.form} onSubmit={handleSubmit} noValidate>
+          <span className={classes.error}>{errors.error}</span>
           <TextField
             variant="outlined"
             margin="normal"
@@ -95,6 +98,7 @@ export default function SignIn(props) {
             onChange={handleChange}
             autoFocus
           />
+          <span className={classes.error}>{errors.email}</span>
           <TextField
             variant="outlined"
             margin="normal"
@@ -107,6 +111,9 @@ export default function SignIn(props) {
             onChange={handleChange}
             type="password"
           />
+          <span style={{ display: "block" }} className={classes.error}>
+            {errors.password}
+          </span>
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
@@ -135,9 +142,6 @@ export default function SignIn(props) {
           </Grid>
         </form>
       </div>
-      {/* <Box mt={8}>
-        <Copyright />
-      </Box> */}
     </Container>
   );
 }
