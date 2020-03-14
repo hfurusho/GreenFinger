@@ -10,8 +10,10 @@ export default {
     return axios.get("/api/plants/" + id);
   },
   // Deletes the plant with the given id
-  deletePlant: function(id) {
-    return axios.delete("/api/plants/" + id);
+  deletePlant: function(plantId, userId) {
+    return axios.delete("/api/plants/", {
+      data: { plantId: plantId, userId: userId }
+    });
   },
   // Saves a plant to the database
   savePlant: function(plantObject) {

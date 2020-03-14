@@ -39,9 +39,25 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    db.Plant.findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
-      .then(dbModel => res.json(dbModel))
+    const { plantId, userId } = req.body;
+
+    db.Plant.findById(plantId)
+      .then(plant => plant.remove())
+      .then(plant => {
+        db.Users.findById(userId)
+          .then(user => {
+            const userPlants = user.plants;
+            const remainingPlants = userPlants.filter(
+              plant => plant.toString() !== plantId
+            );
+
+            user.plants = remainingPlants;
+            user.save().catch(err => res.status(422).json(err));
+
+            return res.json({ plant, user });
+          })
+          .catch(err => res.status(422).json(err));
+      })
       .catch(err => res.status(422).json(err));
   }
 };
