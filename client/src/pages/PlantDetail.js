@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import API from "../utils/API";
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 import Button from "../components/DeleteBtn";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
+import authContext from "../authContext";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -23,8 +24,10 @@ const useStyles = makeStyles(theme => ({
 export default function PlantDetail(props) {
   const [plant, setPlant] = useState({});
   const [formObject, setFormObject] = useState({});
+  const {
+    user: { id: userId }
+  } = useContext(authContext);
 
-  // When this component mounts, grab the book with the _id of props.match.params.id
   useEffect(() => {
     const plantId = props.match.params.id;
     API.getPlant(plantId)
@@ -47,7 +50,7 @@ export default function PlantDetail(props) {
       .catch(err => console.log(err));
   }
 
-  // When the form is submitted, use the API.savePlant method to save the book data
+  // When the form is submitted, use the API.savePlant method to save the data
   // Then reload plants from the database
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -71,8 +74,8 @@ export default function PlantDetail(props) {
   const deletePlant = event => {
     event.preventDefault();
     console.log("deleting plant with id: " + plant._id);
-    API.deletePlant(plant._id)
-      .then(plant => {
+    API.deletePlant(plant._id, userId)
+      .then(() => {
         props.history.push("/table");
       })
       .catch(err => console.log(err));
