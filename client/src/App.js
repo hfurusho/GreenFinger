@@ -57,6 +57,7 @@ function App() {
           <Route exact path="/location" component={Location} />
           <Route exact path="/type" component={Type} />
           <Route exact path="/waterschedule" component={WaterSchedule} />
+          <Route exact path="/waterschedule/:id" component={WaterSchedule} />
           <Route exact path="/notes" component={Notes} />
           <Route exact path="/table" component={Table} />
           <Route exact path="/plant/:id" component={PlantDetail} />
