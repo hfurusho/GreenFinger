@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import API from "../utils/API";
 import Container from "@material-ui/core/Container";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 import Button from "../components/DeleteBtn";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { makeStyles } from "@material-ui/core/styles";
@@ -101,11 +101,22 @@ export default function PlantDetail(props) {
         <h2>Water Time: {plant.plantTime}</h2>
         <h2>Addition notes: {plant.plantNotes}</h2>
 
-        <Link color="primary" href="WaterSchedule" className={classes.link}>
+        <Link
+          color="primary"
+          to={{
+            pathname: "/WaterSchedule/" + plant._id,
+            state: {
+              plantId: plant._id,
+              plantStartDate: plant.plantStartDate,
+              plantTime: plant.plantTime,
+              plantPeriod: plant.plantPeriod
+            }
+          }}
+          className={classes.link}
+        >
           Change Water Schedule
         </Link>
         <Button onClick={deletePlant} />
-        {/* is this right? */}
       </div>
     </Container>
   );
