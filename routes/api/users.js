@@ -88,7 +88,7 @@ router.post("/login", (req, res) => {
           payload,
           keys.secretOrKey,
           {
-            expiresIn: 31556926 // 1 year in seconds
+            expiresIn: 86400 // 1 day in seconds
           },
           (err, token) => {
             res.json({
@@ -106,10 +106,10 @@ router.post("/login", (req, res) => {
 
 // @route get api/users/plants
 // @desc Gets user's plants
-// @access Public
+// @access Private
 router.get(
   "/plants/:id",
-  // passport.authenticate("jwt", { session: false }),
+  passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const userId = req.params.id;
 

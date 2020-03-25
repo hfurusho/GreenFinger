@@ -18,6 +18,7 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import authContext from "./authContext";
 import TopBar from "./components/TopBar";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const { dispatch, setCurrentUser, logoutUser } = useContext(authContext);
@@ -65,20 +66,25 @@ function App() {
         />
         <Switch>
           <Route exact path="/" component={LandingPage} />
-          <Route exact path="/welcome" component={Welcome} />
-          <Route exact path="/name" component={Name} />
-          <Route exact path="/location" component={Location} />
-          <Route exact path="/type" component={Type} />
-          <Route exact path="/waterschedule" component={WaterSchedule} />
-          <Route exact path="/waterschedule/:id" component={WaterSchedule} />
-          <Route exact path="/notes" component={Notes} />
-          <Route exact path="/table" component={Table} />
-          <Route exact path="/plant/:id" component={PlantDetail} />
-          <Route exact path="/table" component={Table} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
 
-          <Route component={NoMatch} />
+          <PrivateRoute exact path="/welcome" component={Welcome} />
+          <PrivateRoute exact path="/name" component={Name} />
+          <PrivateRoute exact path="/location" component={Location} />
+          <PrivateRoute exact path="/type" component={Type} />
+          <PrivateRoute exact path="/waterschedule" component={WaterSchedule} />
+          <PrivateRoute
+            exact
+            path="/waterschedule/:id"
+            component={WaterSchedule}
+          />
+          <PrivateRoute exact path="/notes" component={Notes} />
+          <PrivateRoute exact path="/table" component={Table} />
+          <PrivateRoute exact path="/plant/:id" component={PlantDetail} />
+          <PrivateRoute exact path="/table" component={Table} />
+
+          <Route path="*" component={NoMatch} />
         </Switch>
 
         <Grid container justify="center">
