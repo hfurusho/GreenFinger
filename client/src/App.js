@@ -17,7 +17,7 @@ import NoMatch from "./pages/NoMatch";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import authContext from "./authContext";
-//import "./App.css";
+import TopBar from "./components/TopBar";
 
 function App() {
   const { dispatch, setCurrentUser, logoutUser } = useContext(authContext);
@@ -50,6 +50,19 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <Route
+          path={[
+            "/welcome",
+            "/name",
+            "/location",
+            "/type",
+            "/waterschedule",
+            "/notes",
+            "/table",
+            "/plant"
+          ]}
+          component={TopBar}
+        />
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/welcome" component={Welcome} />
