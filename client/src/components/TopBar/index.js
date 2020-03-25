@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
+import authContext from "../../authContext";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,8 +28,15 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ButtonAppBar() {
+export default function ButtonAppBar(props) {
   const classes = useStyles();
+
+  const { logoutUser } = useContext(authContext);
+
+  const handleLogout = () => {
+    logoutUser();
+    props.history.push("/");
+  };
 
   return (
     <div className={classes.root}>
@@ -39,7 +46,9 @@ export default function ButtonAppBar() {
             <h1 className={classes.title}>
               <strong>Thrive</strong>
             </h1>
-            <Button className={classes.logoutBtn}>Logout</Button>
+            <Button className={classes.logoutBtn} onClick={handleLogout}>
+              Logout
+            </Button>
           </Toolbar>
         </AppBar>
       </Container>
