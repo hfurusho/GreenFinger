@@ -23,52 +23,19 @@ const useStyles = makeStyles(theme => ({
 
 export default function PlantDetail(props) {
   const [plant, setPlant] = useState({});
-  const [formObject, setFormObject] = useState({});
   const {
-    user: { id: userId }
+    user: { id: userId },
+    isAuthenticated
   } = useContext(authContext);
 
   useEffect(() => {
-    const plantId = props.match.params.id;
-    API.getPlant(plantId)
-      .then(res => setPlant(res.data))
-      .catch(err => console.log(err));
-  }, []);
-
-  // Handles updating component state when the user types into the input field
-  function handleInputChange(event) {
-    const { name, value } = event.target;
-    setFormObject({ ...formObject, [name]: value });
-  }
-
-  function loadPlants() {
-    API.getPlant()
-      .then(function(res) {
-        setPlant(res.data);
-        console.log(res.data);
-      })
-      .catch(err => console.log(err));
-  }
-
-  // When the form is submitted, use the API.savePlant method to save the data
-  // Then reload plants from the database
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    if (formObject.name && formObject.location) {
-      API.savePlant({
-        plantName: formObject.plantName,
-        plantLocation: formObject.plantLocation,
-        plantType: formObject.plantType,
-        plantStartDate: formObject.plantStartDate,
-        plantPeriod: formObject.plantPeriod,
-        plantTime: formObject.plantTime,
-        plantNotes: formObject.plantNotes,
-        plantImage: formObject.plantImage
-      })
-        .then(res => loadPlants())
+    if (isAuthenticated) {
+      const plantId = props.match.params.id;
+      API.getPlant(plantId)
+        .then(res => setPlant(res.data))
         .catch(err => console.log(err));
     }
-  }
+  }, [isAuthenticated]);
 
   // Deletes a plant from the database with a given name
   const deletePlant = event => {

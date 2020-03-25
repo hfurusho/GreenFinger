@@ -41,7 +41,7 @@ export default function FullTable() {
     axios.get("/api/users/plants/" + id).then(res => {
       setPlants(res.data);
     });
-  }, []);
+  }, [user]);
 
   const classes = useStyles();
 
